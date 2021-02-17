@@ -12,6 +12,18 @@ generate a .txt with YOLO bounding box annotations.
 TODO: check that all categories are included 
 '''
 
+
+cfg = {
+    'items_path': './data/',
+    'background_path': './backgrounds/',
+    'out_path': './example/',
+    'ouput_num': 1,
+    'items_per_im': 5,
+    'pic_size': 320,
+    'rotation': 30,
+    }
+
+
 def randomint(max, min=0, step=1):
     """Defaults some values for the inbuilt function."""
     return random.randrange(min, max, step)
@@ -54,17 +66,6 @@ def overlay_image_alpha(img, img_overlay, pos, alpha_mask):
         img[y1:y2, x1:x2, c] = (alpha * img_overlay[y1o:y2o, x1o:x2o, c] +
                                 alpha_inv * img[y1:y2, x1:x2, c])
     return img, [x1, y1, x2, y2]
-
-
-cfg = {
-    'items_path': './data/',
-    'background_path': './backgrounds/',
-    'out_path': './example/',
-    'ouput_num': 1,
-    'items_per_im': 5,
-    'pic_size': 320,
-    'rotation': 30,
-    }
 
 
 def choosecat(str):
