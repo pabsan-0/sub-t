@@ -62,6 +62,15 @@ while listener.running:
 
 ## THIS SECTION TO TAKE A PIC & PROCESS THE IMAGE -----------------------------
 
+def crop(pic, binary):
+    '''This function uses a binary map input to compute its edges and crop a
+    picture pic to those edges coordinates in a square shape.'''
+    contours,hierarchy = cv2.findContours(binary,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
+    cnt = contours[0]
+    x,y,w,h = cv2.boundingRect(cnt)
+    return pic[y:y+h,x:x+w]
+
+
 # Name the class & init the counter
 item = input('>> What item are we about to record?')
 i = 0
@@ -72,14 +81,7 @@ while 1:
 
     # Capture a region of the screen based on these coordinates
     pic = np.array(ImageGrab.grab(bbox=[x1, y1, x2, y2]))
-
-    def crop(pic, binary):
-        '''This function uses a binary map input to compute its edges and crop a
-        picture pic to those edges coordinates in a square shape.'''
-        contours,hierarchy = cv2.findContours(binary,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
-        cnt = contours[0]
-        x,y,w,h = cv2.boundingRect(cnt)
-        return pic[y:y+h,x:x+w]
+    pic = cv2.cvtColor(pic, cv2.COLOR_RGB2BGR)
 
     # get a mask with the background area
     background_val = pic[0][0]

@@ -9,7 +9,8 @@ import os
 This script will place some items on top of a background picture &
 generate a .txt with YOLO bounding box annotations.
 
-TODO: check that all categories are included 
+TODO: check that all categories are included
+TODO: implement augmentations: SIZE; MIRRORING; ROTATION; BRIGHTNESS; LIGHT COLOR
 '''
 
 
@@ -17,7 +18,7 @@ cfg = {
     'items_path': './data/',
     'background_path': './backgrounds/',
     'out_path': './example/',
-    'ouput_num': 1,
+    'ouput_num': 600,
     'items_per_im': 5,
     'pic_size': 320,
     'rotation': 30,
@@ -77,6 +78,21 @@ def choosecat(str):
     return None
 
 
+def get_random_crop(image, crop_height, crop_width):
+
+    # determine picture limits & randomly choose where to crop
+    max_x = image.shape[1] - crop_width
+    max_y = image.shape[0] - crop_height
+    x = np.random.randint(0, max_x)
+    y = np.random.randint(0, max_y)
+
+    # actually crop the thing
+    crop = image[y: y + crop_height, x: x + crop_width]
+
+    return crop
+
+
+
 if __name__ == '__main__':
     # Loop as many times as pictures we want
     for j in range(cfg['ouput_num']):
@@ -84,7 +100,7 @@ if __name__ == '__main__':
         # Choose background + crop to square shape + add alpha
         bg = random.choice(os.listdir(cfg['background_path']))
         bg = cv2.imread(cfg['background_path'] + bg)
-        bg = centercrop(bg, cfg['pic_size'])
+        bg = get_random_crop(bg, cfg['pic_size'], cfg['pic_size'])
         bg = cv2.cvtColor(bg, cv2.COLOR_RGB2RGBA)
 
         # Randomly pick a few items to paste on picture
