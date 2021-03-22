@@ -5,8 +5,7 @@ import numpy as np
 import cv2
 import time
 
-''' Pablo Santana - 12/02/2021
-
+''' 
 This script will record a section of your screen (that you have to select) and
 will try to filter out a .png file with one of the items of the darpa dataset.
 
