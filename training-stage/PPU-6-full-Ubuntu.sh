@@ -2,6 +2,7 @@
 
 # This bash script will setup a folder structure to work with YOLOv4 networks.
 # You will NEED TO HARDCODE YOUR HOME USER, since DARKNET WONT EAT ~/* dirs
+# Run this script through dos2unix or copy raw text for compatibility
 # Find commands for training at the bottom of this script
 #
 #  ~/
@@ -16,13 +17,13 @@
 #      │   └── yolov4x-mish.conv.166
 #      ├── cfg/
 #      │   ├── yolov4-tiny-416-6.cfg
-#      │   ├── yolov4-tiny-416-6-test.cfg
+#      │   ├── yolov4-tiny-416-6-test.cfg *
 #      │   ├── yolov4-416-6.cfg
-#      │   ├── yolov4-416-6-test.cfg
+#      │   ├── yolov4-416-6-test.cfg *
 #      │   ├── yolov4-csp-512-6.cfg
-#      │   ├── yolov4-csp-512-6-test.cfg
+#      │   ├── yolov4-csp-512-6-test.cfg *
 #      │   ├── yolov4x-mish-640-6.cfg
-#      │   └── yolov4x-mish-640-6-test.cfg
+#      │   └── yolov4x-mish-640-6-test.cfg *
 #      └── PPU-6/
 #          ├── train/
 #          │   ├── picture001.jpg
@@ -40,7 +41,8 @@
 #          ├── valid.txt
 #          ├── obj.data
 #          └── obj.names
-
+#
+#  * not automatically downloaded, read script for more info
 
 # Setup folder structure
 mkdir ~/YOLOv4/
