@@ -5,12 +5,13 @@
   - A set of virtual pictures produced with [Unity perception](https://github.com/Unity-Technologies/com.unity.perception)
 
 ## Trained models & results:  
+#### Full output + inferred test dataset
 - YOLOv4-tiny: [yolov4-tiny-416-6](https://drive.google.com/file/d/1kGqmUowvL5ePiV0n4fvkYvy-2fD0FYwi/view?usp=sharing)
 
 
-
+#### Benchmarking summary, weights & sources
 | Model       | Image size | mAP | FPS | Training time | Model weights |
-|:------------|:----------:|:---:|:---:|:-------------:|  |
+|:------------|:----------:|:---:|:---:|:-------------:| :------ |
 | yolov4-tiny | 416x416    | 320 |     |        5h     | |
 
 
