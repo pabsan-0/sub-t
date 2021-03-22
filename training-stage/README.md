@@ -9,5 +9,12 @@
 
 
 
+| Model       | Image size | mAP | FPS | Training time | Model weights |
+|:------------|:----------:|:---:|:---:|:-------------:|  |
+| yolov4-tiny | 416x416    | 320 |     |        5h     | |
+
+
+
+
 
 
