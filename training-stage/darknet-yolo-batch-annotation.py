@@ -11,9 +11,9 @@ The file needed as input can be obtained by running this command:
 ./darknet detector test PATH/obj.data PATH/yolov4.cfg PATH/yolov4.weights -dont_show -ext_output < PATH/test.txt > results_yo.txt
 
 Where test.txt is a textfile with the absolute path of each of the images
-to be batch-inferred and results_yo.txt is the output that will be generated.
-Inside this file, each predicted image should look something like this, 
-adjust file scraping to if neccesary for further releases:
+to be batch-inferred and results_yo.txt is the output that will be generated
+by darknet. Inside this file, each predicted image should look something 
+like this, adjust file scraping to if neccesary for further releases:
 
 """
 Enter Image Path:  Detection layer: 30 - type = 28 
