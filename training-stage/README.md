@@ -5,9 +5,12 @@
 
 
 #### Benchmarking summary, weights & sources
-| Model       | Platform | Image size | Train time | mAP | FPS | Model weights  | 
-|:------------|:------   | :---------:|:------:    |:---:|:---:|--------:|
-| yolov4-tiny |Darknet   | 416x416    | 5h        |     |   | |
+| Model        | Platform | Image size | Train time | mAP | FPS | Model weights  | 
+|:-------------|:------   | :---------:|:------:    |:---:|:---:|:--------   |
+| yolov4-tiny  |Darknet   | 416x416    | 5h         |     |     |                | 
+| yolov4       |Darknet   |     |         |     |     |                | 
+| yolov4-csp   |Darknet   |     |         |     |     |                | 
+| yolov4x-mish |Darknet   |     |         |     |     |                | 
 
 
 
