@@ -4,8 +4,7 @@ import time
 import random
 import os
 
-''' Pablo Santana - 12/02/2021
-
+''' 
 This script will place some items on top of a background picture &
 generate a .txt with YOLO bounding box annotations.
 
