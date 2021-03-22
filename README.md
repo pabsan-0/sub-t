@@ -1,5 +1,5 @@
 # sub-t
-Object detection in Sub-T environments 
+Object detection in Sub-T environments. 
 
 ## Data collection
  
