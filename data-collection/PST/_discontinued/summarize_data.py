@@ -8,7 +8,7 @@ This log file will be generated in a hardcoded dir.
 
 Add the annotations dir as first argument when calling this script.
 
-DISCONTINUED
+DISCONTINUED: it is faster to scan the number of instances in a folder an manually move items around
 '''
 
 # define csv name and path
