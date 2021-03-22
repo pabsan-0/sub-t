@@ -7,4 +7,4 @@ The tool Unity Perception is used to generate virtual images from CAD models tha
 
 The textures used for the background clutter were not including to save disk space. They were extracted from simulation videos with the tools available in the sub-t/data-collection/picture-overlapping_discontinued/ directory, however any other set of noisy textures can be used to achieve similar data.
 
-More on Unity Perception can be found at the official [Unity Perception sitory](https://github.com/Unity-Technologies/com.unity.perception/). The tutorial that was followed for producing the data can be found, within the same repo, [here](https://github.com/Unity-Technologies/com.unity.perception/blob/master/com.unity.perception/Documentation~/Tutorial/Phase1.md).
+More on Unity Perception can be found at the official [Unity Perception repository](https://github.com/Unity-Technologies/com.unity.perception/). The tutorial that was followed for producing the data can be found, within the same repo, [here](https://github.com/Unity-Technologies/com.unity.perception/blob/master/com.unity.perception/Documentation~/Tutorial/Phase1.md).
