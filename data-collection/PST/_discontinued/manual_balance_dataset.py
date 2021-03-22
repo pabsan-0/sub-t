@@ -6,7 +6,10 @@ This is a helper script meant for manually extracting a balanced dataset
 from a collection of YOLO pictures+annotations.
 
 Requires a prepared csv file!
+
+DISCONTINUED: it is faster to scan the number of instances in a folder an manually move items around
 '''
+
 filename = 'balancedDatasetList_Shuffle.txt'
 df = pandas.read_csv('PSTR900-details.csv')
 
