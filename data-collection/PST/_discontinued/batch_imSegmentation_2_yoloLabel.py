@@ -3,13 +3,12 @@ import numpy as np
 import sys
 import os
 
-''' Pablo Santana - 01/03/2021
-
+'''
 This script creates bounding box from instance segmentation map labels and
 stores them in txt files with the same name as the source. Working paths must
 be HARDCODED at the MAIN of this script.
 
-DISCONTINUED
+DISCONTINUED: labelling is pointless without resizing.
 '''
 
 def annotate(picname, rgb_dir):
