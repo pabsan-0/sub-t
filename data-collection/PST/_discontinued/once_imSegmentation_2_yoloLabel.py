@@ -5,10 +5,9 @@ import numpy as np
 This script creates bounding box from instance segmentation map labels and
 stores them in txt files with the same name as the source.
 
-This is a development source version for a single file. You might want to check
-its adaptation to batches of data in a different script.
+This is a development source version for a single file.
 
-DISCONTINUED
+DISCONTINUED: labelling is pointless without resizing.
 '''
 
 
