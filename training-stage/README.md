@@ -2,6 +2,10 @@
 
 #### Full output + inferred test set
 - YOLOv4-tiny: [yolov4-tiny-416-6](https://drive.google.com/file/d/1kGqmUowvL5ePiV0n4fvkYvy-2fD0FYwi/view?usp=sharing)
+- YOLOv4: 
+- YOLOv4-csp: 
+- YOLOv4x-mish:
+- EfficientDet:
 
 
 #### Benchmarking summary, weights & sources
