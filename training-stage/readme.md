@@ -5,7 +5,7 @@
   - A set of virtual pictures produced with [Unity perception](https://github.com/Unity-Technologies/com.unity.perception)
 
 
-## Data splits:  
+### Data splits:  
 
 | PPU-6 Split | Backpack | Helmet | Drill | Extinguisher | Survivor | Rope |  
 |:------      |:-------: |:-----: |:-----:|:------------:|:--------:|:----:| 
