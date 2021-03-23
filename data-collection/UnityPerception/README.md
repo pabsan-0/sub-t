@@ -5,6 +5,6 @@ The tool Unity Perception is used to generate virtual images from CAD models tha
 - Model textures: which shouldn't be needed but are included as assets just in case.
 - Scripts for randomizing light (copied from the Unity tutorial) and scale (self-written) within the simulation, as well as the tags that the items need to undergo the scripted modifications.
 
-The textures used for the background clutter were not included to save disk space. They were extracted from simulation videos with the tools available in the sub-t/data-collection/picture-overlapping_discontinued/ directory, however any other set of noisy textures can be used to achieve similar data.
+The textures used for the background clutter were not included to save disk space. They were extracted from simulation videos with the tools available in sub-t/data-collection/tools/ directory, however any other set of noisy textures can be used to achieve similar data.
 
 More on Unity Perception can be found at the official [Unity Perception repository](https://github.com/Unity-Technologies/com.unity.perception/). The tutorial that was followed for producing the data can be found, within the same repo, [here](https://github.com/Unity-Technologies/com.unity.perception/blob/master/com.unity.perception/Documentation~/Tutorial/Phase1.md).
