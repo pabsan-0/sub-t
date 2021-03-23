@@ -7,5 +7,4 @@
  
 #### External
 - Efficient-det training on PPU-6: [Colab Notebook](https://colab.research.google.com/drive/1mDyDFU5wtjKFR-EG05un8POHEaTs0W1B#scrollTo=uEG-D99zit7U).
-- Official repository from where the code is taken: [Google's Automl](https://github.com/google/automl)
-- 
+- Official repository from where the code is taken: [Google's Automl](https://github.com/google/automl).
