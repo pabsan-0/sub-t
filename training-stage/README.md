@@ -7,6 +7,8 @@
   - Run the python script FILE to apply the labels contained in this text file to the pointed images and store them in a new directory.
 
 #### Working tensorflow models (EfficientDet)
+- Training and inference: find the whole setup in the following [Colab Notebook](https://colab.research.google.com/drive/1mDyDFU5wtjKFR-EG05un8POHEaTs0W1B#scrollTo=uEG-D99zit7U).
+
 ##  Benchmarking on the [PPU-6 dataset](https://drive.google.com/file/d/1D-oBYlsD2c4dWnMyhtav1_mYnqfNK-ep/view?usp=sharing)
 
 #### Full output + inferred test set
