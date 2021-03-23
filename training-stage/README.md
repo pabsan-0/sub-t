@@ -1,3 +1,9 @@
+##  Model 
+
+#### Working darknet models (YOLO family)
+Use the file FILENAME to download everything you need for training darknet models on a local machine/google colab. This will set up a folder structure and download all required assets, including the PPU-6 dataset. Commands for running the training and inferring are included at the end of this file and should be manually run from a terminal window.
+
+#### Working tensorflow models (EfficientDet)
 
 
 ##  Benchmarking on the [PPU-6 dataset](https://drive.google.com/file/d/1D-oBYlsD2c4dWnMyhtav1_mYnqfNK-ep/view?usp=sharing)
