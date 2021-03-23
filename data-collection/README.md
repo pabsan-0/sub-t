@@ -5,7 +5,7 @@
 First baseline dataset with the DARPA artifacts of interest in both real and synthetic images. It is built from:
   - ~400 instances of the items backpack, drill, extinguisher and survivor borrowed from the [PST-RGB dataset](https://github.com/ShreyasSkandanS/pst900_thermal_rgb).
   - ~400 instances of rope and helmet artifacts, in pictures taken by the author at the LTU facilities. 
-  - A set of virtual pictures providing ~100 instances of each artifact produced with [Unity perception](https://github.com/Unity-Technologies/com.unity.perception).
+  - A set of virtual pictures providing ~100 instances of each artifact produced with [SynthDet](https://github.com/Unity-Technologies/SynthDet).
  
 
 | PPU-6 Split | Backpack | Helmet | Drill | Extinguisher | Survivor | Rope |  
