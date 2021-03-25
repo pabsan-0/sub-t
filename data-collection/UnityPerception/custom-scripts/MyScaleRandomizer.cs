@@ -6,16 +6,13 @@ using UnityEngine.Perception.Randomization.Samplers;
 
 namespace UnityEngine.Perception.Randomization.Randomizers.SampleRandomizers
 {
-    /// <summary>
-    /// Randomizes the scale of objects tagged with a MyScaleRandomizerTag
-    /// </summary>
+
     [Serializable]
     [AddRandomizerMenu("Perception/My Scale Randomizer")]
     public class MyScaleRandomizer : Randomizer
     {
-
         /// <summary>
-        /// Randomizes the rotation of tagged objects at the start of each scenario iteration
+        /// Randomizes the scale of objects tagged with a MyScaleRandomizerTag
         /// </summary>
         protected override void OnIterationStart()
         {
