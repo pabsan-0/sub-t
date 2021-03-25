@@ -1,5 +1,5 @@
 # Data collection roadmap:
-![DATA-ROADMAP-box](https://user-images.githubusercontent.com/63670587/112552080-80dbea80-8dc2-11eb-91bd-590dd1951f14.png)
+![DATA-ROADMAP-box](https://user-images.githubusercontent.com/63670587/112552855-c6e57e00-8dc3-11eb-9095-fb206b5956a4.png)
 
 
 # Datasets:  
