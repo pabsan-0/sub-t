@@ -4,7 +4,7 @@
 
 ##  Training and inferring on the different platforms 
 #### Working darknet models (YOLO family)
-Use the file FILENAME to download everything you need for training darknet models on a local machine/google colab. This will set up a folder structure and download all required assets for setting up all the yolo networks, including the very PPU-6 dataset. Commands for training and inferring are included at the end of this file and should be manually run from a terminal window. Since batch inference with image output is not supported by default in AlexeyAB's branch of darknet, the procedure to follow for inferring and retrieving batches of labelled images is supported by a custom script.
+###### Use the file FILENAME to download everything you need for training darknet models on a local machine/google colab. This will set up a folder structure and download all required assets for setting up all the yolo networks, including the very PPU-6 dataset. Commands for training and inferring are included at the end of this file and should be manually run from a terminal window. Since batch inference with image output is not supported by default in AlexeyAB's branch of darknet, the procedure to follow for inferring and retrieving batches of labelled images is supported by a custom script.
 
 - Training:
   - Start training for a default period of time (depends on model). 
@@ -20,7 +20,7 @@ Use the file FILENAME to download everything you need for training darknet model
   - Then evaluate the output with the tools available at the (MS COCO repository)[https://github.com/cocodataset/cocoapi].
   
 #### Working tensorflow models (EfficientDet)
-Find the whole setup in the following [Colab Notebook](https://colab.research.google.com/drive/1mDyDFU5wtjKFR-EG05un8POHEaTs0W1B#scrollTo=uEG-D99zit7U).
+###### Find the whole setup in the following [Colab Notebook](https://colab.research.google.com/drive/1mDyDFU5wtjKFR-EG05un8POHEaTs0W1B#scrollTo=uEG-D99zit7U).
 
 - Training:
   - Start training for an infinite amount of iterations
