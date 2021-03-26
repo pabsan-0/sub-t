@@ -39,10 +39,12 @@
 
 #### Full output + inferred test set
 - YOLOv4-tiny: [yolov4-tiny-416-6](https://drive.google.com/file/d/1kGqmUowvL5ePiV0n4fvkYvy-2fD0FYwi/view?usp=sharing)
-- YOLOv4: 
+- YOLOv4-tiny-3l: [yolov4-tiny-3l-416-6](https://drive.google.com/file/d/1qCwnTSipnOD12DV5JW_GnpsAzX_MVxtB/view?usp=sharing)
+- YOLOv4: [yolov4-416-6](https://drive.google.com/file/d/1gs-wTb1AA3CxVfU7_mv0UDrvLsM0IHDT/view?usp=sharing)
 - YOLOv4-csp: 
 - YOLOv4x-mish:
-- EfficientDet:
+- EfficientDet-D0: [effdet-d0-512-6](https://drive.google.com/file/d/1ngbk1b-gYV6nHC40hP6jXGsUmyMzChUM/view?usp=sharing)
+- EfficientDet-D1:
 
 
 #### Benchmarking summary, weights & sources
@@ -53,7 +55,7 @@
 | yolov4          |Darknet   |     |         |     |     |||                | 
 | yolov4-csp      |Darknet   |     |         |     |     |||                | 
 | yolov4x-mish    |Darknet   |     |         |     |     |||                | 
-| efficientdet-d0 |Tensorflow|     |         |     |     |||                | 
+| efficientdet-d0 |Tensorflow|512x512|         |     |     |||                | 
 | efficientdet-d1 |Tensorflow|     |         |     |     |||                | 
 
 * NVIDIA GTX 1060 mobile
