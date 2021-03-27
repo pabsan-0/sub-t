@@ -26,7 +26,7 @@ python3 valcoco.py PPU-6-test-coco.json yolov4-416-6-coco.json
 \* The fact that some -1 appears is because NaNs have appeared when there are no items of that size (division by zero).
 
 ## How did we arrive here
-- COCO ground-truths template can be found in [the MS COCO webpage - data format](https://cocodataset.org/#format-data)
-- COCO detection results can be seen in [the MS COCO webpage - results format](https://cocodataset.org/#format-results)
-- Some actual result examples are provided in the [COCO repository](https://github.com/cocodataset/cocoapi/tree/master/results)
+- COCO ground-truths template can be found in [the MS COCO webpage - data format](https://cocodataset.org/#format-data).
+- COCO detection results template can be found in [the MS COCO webpage - results format](https://cocodataset.org/#format-results).
+- Some result examples are provided in the [COCO repository](https://github.com/cocodataset/cocoapi/tree/master/results).
 - [This tool](https://codebeautify.org/jsonviewer) proved very useful for previewing json files & working our way around them.
