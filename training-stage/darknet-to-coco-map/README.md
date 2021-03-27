@@ -2,9 +2,7 @@
 Darknet output is not compatible with official pycocotools for obtaining mAP metrics official to the MS COCO challenge.
 This folder includes assets to make the conversion from YOLO results to a json format that is compatible with pycocotools.
 
-- darknet-2-coco-detections.py will transform the YOLO results into MS COCO formatted ones.
-  - Obtain the required file from darknet by running 
-  - This script also needs a json version of the ground-truths.
+- darknet-2-coco-detections.py will transform the YOLO results into MS COCO formatted ones. Requires the output of darknet plus a COCO version of the ground-truths.
 - valcoco.py holds a few commands for using the COCO API to compute the mAP table from the COCO json ground-truths and detections.
 - PPU-6-test-coco.json holds the ground-truth labels of the PPU-6 test split, converted with the [tool in this repository](https://github.com/Taeyoung96/Yolo-to-COCO-format-converter).
 - The following assets were added to test and experiment with these tools:
