@@ -184,5 +184,5 @@ rm ~/YOLOv4/PPU-6/generate-txts.py
 # Test multiple files
 # LD_LIBRARY_PATH=/usr/local/lib:/usr/lib/cuda-10.2/targets/x86_64-linux/lib/ ./darknet detector test cfg/obj.data cfg/yolov3.cfg yolov3.weights < images_files.txt
 #
-# Infer multilpe files with positional output to text file
+# Infer multilpe files with positional output to text file - USE THIS FOR MAP TOO
 # LD_LIBRARY_PATH=/usr/local/lib:/usr/lib/cuda-10.2/targets/x86_64-linux/lib/ ./darknet detector test ~/YOLOv4/PPU-6/obj.data ~/YOLOv4/yolov4-tiny-416-6-test.cfg ~/YOLOv4/yolo_backup/yolov4-tiny-416-6_best.weights -dont_show -ext_output < ../PPU-6/test.txt > results_pablo.txt
