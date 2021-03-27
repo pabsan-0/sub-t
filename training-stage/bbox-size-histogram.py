@@ -14,7 +14,7 @@ Args:
 # import folderpath argument and check / so that a filename can be appended later
 folder_path = argv[1]
 if folder_path[-1] != '/':
-    folder_path.append('/')
+    folder_path = folder_path + '/'
 
 # import baseline_dim argument else default to 1
 try:
