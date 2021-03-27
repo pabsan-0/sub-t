@@ -5,7 +5,9 @@ import hashlib
 import tensorflow as tf
 from PIL import Image
 
-
+'''
+THIS FILE WAS BARELY MODIFIED FROM https://github.com/AlessioTonioni/tf-objdetector, all credits to him
+'''
 
 def int64_feature(value):
   return tf.train.Feature(int64_list=tf.train.Int64List(value=[value]))
