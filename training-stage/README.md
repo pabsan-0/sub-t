@@ -10,11 +10,9 @@
   - Start training for a default period of time (depends on model). 
   - Over time, new model weight files will be generated. A "best" weight file will be kept aside until a new one is generated with better AP on the valid set. 
   - Once training is finished, the optimal output weight file to use will be the "best" one. If validation AP hasnt't stalled (seen from plot), rerun training parting from these weights.
-
 - Inference:
   - Generate a batch infer result text file with the command shown at the end of the file FILE.
   - Run the python script FILE to apply the labels contained in this text file to the pointed images and store them in a new directory.
-
 - Benchmarking on COCO metrics:
   - Run the following command:
   - Then evaluate the output with the tools available at the (MS COCO repository)[https://github.com/cocodataset/cocoapi].
@@ -26,12 +24,10 @@
   - Start training for an infinite amount of iterations
   - Over time, new model checkpoint files will be generated. A "best" checkpoint file will be kept aside until a new one is generated with better AP on the valid set. 
   - Once the best checkpoint file hasn't been overwritten for a while and if its AP is good, cut training and keep this as the output model.
-
 - Inference:
   - Convert the checkpoint directory to a .pb model.
   - Run the command shown in the colab notebook to extract the set of pictures.
   - Zip and import to drive to access the images.
-
 - Benchmarking on COCO metrics:
   - EfficientDet already imports the MS COCO API for computing metrics, just use the command provided in the colab notebook on the checkpoint directory. 
 
