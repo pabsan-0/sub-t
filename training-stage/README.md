@@ -50,9 +50,9 @@
 #### Benchmarking summary, weights & sources
 | Model           | Platform | Image size | Train time | mAP | AP@0.5 | AP@0.75 | FPS | Model weights  | 
 |:-------------   |:------   | :---------:|:------:    |:---:|:---:|:---:|:---:|:--------   |
-| yolov4-tiny     |Darknet   | 416x416    | 5h*        |     |     |     |     |                | 
-| yolov4-tiny-3l  |Darknet   | 416x416    | 5h*        |     |     |     |     |                | 
-| yolov4          |Darknet   | 416x416    |            |     |     |     ||                | 
+| yolov4-tiny     |Darknet   | 416x416    | 5h*        |     |     |     |200|                | 
+| yolov4-tiny-3l  |Darknet   | 416x416    | 5h*        |     |     |     |178|                | 
+| yolov4          |Darknet   | 416x416    |            |     |     |     |28|                | 
 | yolov4-csp      |Darknet   |            |            |     |     |     ||                | 
 | yolov4x-mish    |Darknet   |            |            |     |     |     ||                | 
 | efficientdet-d0 |Tensorflow| 512x512    |            |     |     |     ||                | 
