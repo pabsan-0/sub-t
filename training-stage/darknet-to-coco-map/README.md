@@ -12,7 +12,7 @@ This folder includes assets to make the conversion from YOLO results to a json f
 To follow the whole thing, run these commands:
 ```
 # Run darknet to get results  
-detector test \*/obj.data \*.cfg \*.weights -dont_show -ext_output < \*/test.txt > results.txt
+detector test */obj.data *.cfg *.weights -dont_show -ext_output < */test.txt > results.txt
 
 #Convert results to json  
 python3 darknet_2_coco_detections.py PPU-6-test-coco.json yolov4-416-6-test-results.txt yolov4-416-6-coco.json
@@ -23,6 +23,7 @@ python3 valcoco.py PPU-6-test-coco.json yolov4-416-6-coco.json
    
 ![Screenshot from 2021-03-27 15-57-01](https://user-images.githubusercontent.com/63670587/112724750-1be4d980-8f15-11eb-9888-bc9b1f29b189.png)
 
+\* The fact that some -1 appears is because nAns have appeared when there are no items of that size (division by zero.)
 
 ## How did we arrive here
 - COCO ground-truths template can be found in [the MS COCO webpage - data format](https://cocodataset.org/#format-data)
