@@ -44,10 +44,10 @@
 
 
 #### Benchmarking summary, weights & sources
-| Model           | Platform    | Image size | mAP |AP@0.5|AP@0.75| FPS | 
-|:-------------   |:------      | :---------:|:---:|:----:|:-----:|:---:|
-| yolov4-tiny     |Darknet      | 416x416    |.712 | .946 | .875  |197  |
-| yolov4-tiny-3l  |Darknet      | 416x416    |.516 | .912 | .532  |182  | 
+| Model           | Platform    | Image size | mAP |AP@0.5|AP@0.75| FPS |
+|:-------------   |:------      | :---------:|:---:|:----:|:-----:|:---:| 
+| yolov4-tiny     |Darknet      | 416x416    |.712 | .946 | .875  |197  | 
+| yolov4-tiny-3l  |Darknet      | 416x416    |.516 | .912 | .532  |182  |  
 | yolov4          |Darknet      | 416x416    |.619 | .931 | .735  |28   |
 | yolov4-csp      |Darknet      | 512x512    |.544 | .907 | .602  |26   |
 | yolov4x-mish    |Darknet      | 640x640    |.615 | .922 | .751  |9    |
@@ -55,7 +55,6 @@
 | efficientdet-d1 |google-automl| 640x640    |.319 | .551 | .345  |23   |
 
 \* FPS benchmarked on NVIDIA GTX 1060-mobile
-
-
+  
 
 
