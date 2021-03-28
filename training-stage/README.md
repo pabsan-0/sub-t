@@ -44,17 +44,16 @@
 
 
 #### Benchmarking summary, weights & sources
-| Model           | Platform | Image size | Train time | mAP | AP@0.5 | AP@0.75 | FPS | Model weights  | 
-|:-------------   |:------   | :---------:|:------:    |:---:|:---:|:---:|:---:|:--------   |
-| yolov4-tiny     |Darknet   | 416x416    | 5h*        |     |     |     |200|                | 
-| yolov4-tiny-3l  |Darknet   | 416x416    | 5h*        |     |     |     |178|                | 
-| yolov4          |Darknet   | 416x416    |            |     |     |     |28|                | 
-| yolov4-csp      |Darknet   |            |            |     |     |     ||                | 
-| yolov4x-mish    |Darknet   |            |            |     |     |     ||                | 
-| efficientdet-d0 |Tensorflow| 512x512    |            |     |     |     ||                | 
-| efficientdet-d1 |Tensorflow|            |            |     |     |     ||                | 
+| Model           | Platform | Image size | mAP | AP@0.5 | AP@0.75 | FPS | Model weights  | 
+|:-------------   |:------   | :---------:|:---:|:---:|:---:|:---:|:--------   |
+| yolov4-tiny     |Darknet   | 416x416    |0.712|0.946|0.875|200|                | 
+| yolov4-tiny-3l  |Darknet   | 416x416    |0.516|0.912|0.532|178|                | 
+| yolov4          |Darknet   | 416x416    |0.619|0.931|0.735|28 |                | 
+| yolov4-csp      |Darknet   | 512x512    |0.544|0.907|0.602|   |                | 
+| yolov4x-mish    |Darknet   | 640x640    |0.615|0.922|0.751|   |                | 
+| efficientdet-d0 |Tensorflow| 512x512    |     |     |     |   |                | 
+| efficientdet-d1 |Tensorflow| 640x640    |     |     |     |   |                | 
 
-* NVIDIA GTX 1060 mobile
 
 
 
