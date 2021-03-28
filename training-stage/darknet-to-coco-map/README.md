@@ -1,3 +1,4 @@
+# DEPRECATED: GO TO BENCHMARKING FOR THE SAME CONTENT
 # Darknet to COCO for computing COCO metrics
 Darknet output is not compatible with official pycocotools for obtaining mAP metrics official to the MS COCO challenge.
 This folder includes assets to make the conversion from YOLO results to a json format that is compatible with pycocotools.
