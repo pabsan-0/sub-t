@@ -46,11 +46,11 @@
 #### Benchmarking summary, weights & sources
 | Model           | Platform | Image size | mAP | AP@0.5 | AP@0.75 | FPS | Model weights  | 
 |:-------------   |:------   | :---------:|:---:|:---:|:---:|:---:|:--------   |
-| yolov4-tiny     |Darknet   | 416x416    |0.712|0.946|0.875|200|                | 
-| yolov4-tiny-3l  |Darknet   | 416x416    |0.516|0.912|0.532|178|                | 
-| yolov4          |Darknet   | 416x416    |0.619|0.931|0.735|28 |                | 
-| yolov4-csp      |Darknet   | 512x512    |0.544|0.907|0.602|   |                | 
-| yolov4x-mish    |Darknet   | 640x640    |0.615|0.922|0.751|   |                | 
+| yolov4-tiny     |Darknet   | 416x416    |.712|.946|.875|200|                | 
+| yolov4-tiny-3l  |Darknet   | 416x416    |.516|.912|.532|178|                | 
+| yolov4          |Darknet   | 416x416    |.619|.931|.735|28 |                | 
+| yolov4-csp      |Darknet   | 512x512    |.544|.907|.602|   |                | 
+| yolov4x-mish    |Darknet   | 640x640    |.615|.922|.751|   |                | 
 | efficientdet-d0 |Tensorflow| 512x512    |     |     |     |   |                | 
 | efficientdet-d1 |Tensorflow| 640x640    |     |     |     |   |                | 
 
