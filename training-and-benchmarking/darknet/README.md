@@ -17,5 +17,5 @@ The scripts will lead the way, but find here an outline of what is happening:
   - Run the python script FILE to apply the labels contained in this text file to the pointed images and store them in a new directory.
 - Benchmarking on COCO metrics:
   - Run the following command to export batch inference results into a text file:
-  - Then evaluate the output with the tools available at the (MS COCO repository)[https://github.com/cocodataset/cocoapi]. This requires additional steps that can be found in the [darknet-benchmarking](https://github.com/solder-fumes-asthma/sub-t/tree/master/training-and-benchmarking/darknet/darknet-benchmarking) dir.
+  - Then evaluate the output with the tools available at the [MS COCO repository](https://github.com/cocodataset/cocoapi). This requires additional steps that can be found in the [darknet-benchmarking](https://github.com/solder-fumes-asthma/sub-t/tree/master/training-and-benchmarking/darknet/darknet-benchmarking) dir.
   
