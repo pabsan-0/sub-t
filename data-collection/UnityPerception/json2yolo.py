@@ -1,0 +1,38 @@
+import json
+from sys import argv
+
+'''
+This script is used to convert JSON labels from the Unity Perception package to
+YOLO darknet annotation format.
+
+The only input taken here is the json file. The picture sizes
+MUST BE HARDCODED. If there are various json files just run the program as many
+times changing the file name.
+
+args:
+    Json file holding the annotations
+'''
+
+json_file = argv[1]
+
+pic_height = 680
+pic_width = 680
+
+with open(json_file, 'r') as file:
+    big_json_file = json.load(file)
+
+for picture in big_json_file['captures']:
+    filename = picture['filename'].split('/')[-1]
+    filename = filename[:-4] + '.txt'
+
+    with open(filename, 'w') as annotation_file:
+        for bbox in picture['annotations'][0]['values']:
+            annotation_file.write(
+                '%d %f %f %f %f\n' % (
+                    bbox['label_id'],
+                    (bbox['x'] + bbox['width'] /2)  / pic_width,
+                    (bbox['y'] + bbox['height']/2)  / pic_height,
+                    bbox['width']                   / pic_width,
+                    bbox['height']                  / pic_height
+                    )
+                )
