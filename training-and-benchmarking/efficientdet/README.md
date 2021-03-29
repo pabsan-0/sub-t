@@ -1,9 +1,9 @@
 # Training and benchmarking google-automl models (Efficientdet family)
 
 ## In this directory:
-- [efficientdet-local-setup.sh](https://github.com/solder-fumes-asthma/sub-t/blob/master/training-and-benchmarking/efficient-det/efficientdet-local-setup.sh): Short bash script to clone google-automl and download the models efficientdet-d0 and efficientdet-d1.
+- [efficientdet-local-setup.sh](https://github.com/solder-fumes-asthma/sub-t/blob/master/training-and-benchmarking/efficientdet/efficientdet-local-setup.sh): Short bash script to clone google-automl and download the models efficientdet-d0 and efficientdet-d1.
 
-- [efficientdet-local-testFPS.sh](https://github.com/solder-fumes-asthma/sub-t/blob/master/training-and-benchmarking/efficient-det/efficientdet-local-testFPS.sh): Short bash script to run a fps test on local hardware for the models efficientdet-d0 and efficientdet-d1.
+- [efficientdet-local-testFPS.sh](https://github.com/solder-fumes-asthma/sub-t/blob/master/training-and-benchmarking/efficientdet/efficientdet-local-testFPS.sh): Short bash script to run a fps test on local hardware for the models efficientdet-d0 and efficientdet-d1.
 
 - [yolo2tfrecord_fixes.py](https://github.com/solder-fumes-asthma/sub-t/blob/master/training-and-benchmarking/efficient-det/yolo2tfrecord_fixes.py): This file was borrowed from [AlessionTonioni's repo](https://github.com/AlessioTonioni/tf-objdetector). It is used to convert the YOLO annotations of the available data into .tfrecord files that efficientdet's official implementation requires. A few small changes have been made on this file:  
   - Fixed issues with tensorflow versions related to library names (for example tf.python_io.\* -> tf.io.\*) on google colab.
