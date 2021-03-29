@@ -6,6 +6,9 @@
 
 - [6-class-cfg](https://github.com/solder-fumes-asthma/sub-t/tree/master/training-and-benchmarking/darknet/6-class-cfg): This folder contains the .cfg files that define the darknet networks architecture. These have been modified from the ones provided at [AlexeyAB's repository](https://github.com/AlexeyAB/darknet) to fit a 6-class object detection task.
 
+## External links:
+- [AlexeyAB's darknet repository](https://github.com/AlexeyAB/darknet).
+
 ## Procedure for working darknet models
 The scripts will lead the way, but find here an outline of what is happening:
 - Training:
