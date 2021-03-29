@@ -2,7 +2,7 @@
 ## In this directory:
 - [setup-yolo-PPU-6-full-Ubuntu.sh](https://github.com/solder-fumes-asthma/sub-t/blob/master/training-and-benchmarking/darknet/setup-yolo-PPU-6-full-Ubuntu.sh): Run this script to clone darknet and set up a folder structure, downloading all required assets for setting up all the yolo networks, including the very PPU-6 dataset. Commands for training and inferring are included at the end of this file and should be manually run from a terminal window.  
 
-- [darknet-benchmarking](https://github.com/solder-fumes-asthma/sub-t/tree/master/training-and-benchmarking/darknet/darknet-benchmarking): This folder holds a series of scritps to go through all the after-training tasks: inferring and benchmarking mAP and FPS.
+- [darknet-benchmarking](https://github.com/solder-fumes-asthma/sub-t/tree/master/training-and-benchmarking/darknet/darknet-benchmarking): Holds a set of scritps to go through all the after-training tasks: inferring and benchmarking both mAP and FPS.
 
 - [6-class-cfg](https://github.com/solder-fumes-asthma/sub-t/tree/master/training-and-benchmarking/darknet/6-class-cfg): This folder contains the .cfg files that define the darknet networks architecture. These have been modified from the ones provided at [AlexeyAB's repository](https://github.com/AlexeyAB/darknet) to fit a 6-class object detection task.
 
