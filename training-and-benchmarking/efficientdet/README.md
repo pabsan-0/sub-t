@@ -1,6 +1,11 @@
 # Training and benchmarking google-automl models (Efficientdet family)
 
 ## In this directory:
+
+- [EfficientDet-D0.ipynb](https://github.com/solder-fumes-asthma/sub-t/blob/master/training-and-benchmarking/efficientdet/EfficientDet-D0.ipynb): Colab notebook used for working efficientdet-d0. See live version under external links.
+
+- [EfficientDet-D1.ipynb](https://github.com/solder-fumes-asthma/sub-t/blob/master/training-and-benchmarking/efficientdet/EfficientDet-D1.ipynb): Colab notebook used for working efficientdet-d1. See live version under external links.
+
 - [efficientdet-local-setup.sh](https://github.com/solder-fumes-asthma/sub-t/blob/master/training-and-benchmarking/efficientdet/efficientdet-local-setup.sh): Short bash script to clone google-automl and download the models efficientdet-d0 and efficientdet-d1.
 
 - [efficientdet-local-testFPS.sh](https://github.com/solder-fumes-asthma/sub-t/blob/master/training-and-benchmarking/efficientdet/efficientdet-local-testFPS.sh): Short bash script to run a fps test on local hardware for the models efficientdet-d0 and efficientdet-d1.
