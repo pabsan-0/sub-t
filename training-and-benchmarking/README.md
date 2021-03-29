@@ -1,7 +1,6 @@
 # Training and benchmarking object detection models
 ##  Training roadmap
-[TRAIN-ROADMAP](https://user-images.githubusercontent.com/63670587/112643820-1029e200-8e45-11eb-8b6b-9b7c048f374d.png)
-![image](https://user-images.githubusercontent.com/63670587/112826240-02ff3400-908d-11eb-8a42-51dafbdc650d.png)
+![TRAIN-ROADMAP](https://user-images.githubusercontent.com/63670587/112643820-1029e200-8e45-11eb-8b6b-9b7c048f374d.png)
 
 
 ##  Model Benchmarking on the [PPU-6 dataset](https://drive.google.com/file/d/1D-oBYlsD2c4dWnMyhtav1_mYnqfNK-ep/view?usp=sharing)
@@ -28,6 +27,8 @@
 | efficientdet-d1 |google-automl| 640x640    |.319 | .551 | .345  |23   |
 
 \* FPS benchmarked on NVIDIA GTX 1060-mobile
-  
+
+#### Experimental roadmap
+![image](https://user-images.githubusercontent.com/63670587/112826240-02ff3400-908d-11eb-8a42-51dafbdc650d.png)
 
 
