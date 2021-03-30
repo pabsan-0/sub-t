@@ -1,6 +1,7 @@
 # Training and benchmarking object detection models
 ##  Training roadmap
-![TRAIN-ROADMAP](https://user-images.githubusercontent.com/63670587/112643820-1029e200-8e45-11eb-8b6b-9b7c048f374d.png)
+[overall-roadmap-planning](https://user-images.githubusercontent.com/63670587/112643820-1029e200-8e45-11eb-8b6b-9b7c048f374d.png)
+![image](https://user-images.githubusercontent.com/63670587/112984909-c6e8d380-915f-11eb-9516-c5a0331f28db.png)
 
 
 ##  Model Benchmarking on the [PPU-6 dataset](https://drive.google.com/file/d/1D-oBYlsD2c4dWnMyhtav1_mYnqfNK-ep/view?usp=sharing)
