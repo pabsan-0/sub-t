@@ -10,8 +10,8 @@ First baseline dataset with the DARPA artifacts of interest in both real and syn
   - A set of virtual pictures providing ~100 instances of each artifact produced with Unity [SynthDet](https://github.com/Unity-Technologies/SynthDet).
  
 
-| PPU-6 Split | Images   | Backpack | Helmet | Drill | Extinguisher | Survivor | Rope |  
-|:------      |:-------: |:-------: |:-----: |:-----:|:------------:|:--------:|:----:| 
-| Train       | 912      | 320      | 336    | 306   | 317          |  295     | 309  |  
-| Test        | 520      | 152      | 158    | 142   | 155          | 146      | 137  |  
-| Valid       | 275      | 81       | 80     | 80    | 77           | 76       | 80   |  
+| **PPU-6 Split** | Images   | Backpack | Helmet | Drill | Extinguisher | Survivor | Rope |  
+|:------          |:-------: |:-------: |:-----: |:-----:|:------------:|:--------:|:----:| 
+| **Train**       | 912      | 320      | 336    | 306   | 317          |  295     | 309  |  
+| **Test**        | 520      | 152      | 158    | 142   | 155          | 146      | 137  |  
+| **Valid**       | 275      | 81       | 80     | 80    | 77           | 76       | 80   |  
