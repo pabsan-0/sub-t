@@ -16,7 +16,7 @@
 - EfficientDet-D1:
 
 
-#### Benchmarking summary, weights & sources
+#### Benchmarking summary
 | Model           | Platform    | Image size | mAP |AP@0.5|AP@0.75| FPS |
 |:-------------   |:------      | :---------:|:---:|:----:|:-----:|:---:| 
 | yolov4-tiny     |Darknet      | 416x416    |.712 | .946 | .875  |197  | 
@@ -28,6 +28,18 @@
 | efficientdet-d1 |google-automl| 640x640    |.319 | .551 | .345  |23   |
 
 \* FPS benchmarked on NVIDIA GTX 1060-mobile
+
+
+##  Model Benchmarking on the PP-6 dataset (equal to [PPU-6](https://drive.google.com/file/d/1D-oBYlsD2c4dWnMyhtav1_mYnqfNK-ep/view?usp=sharing) without SynthDet samples)
+
+#### Benchmarking summary
+| Model           | Platform    | Image size | mAP |AP@0.5|AP@0.75| FPS |
+|:-------------   |:------      | :---------:|:---:|:----:|:-----:|:---:| 
+| yolov4-tiny     |Darknet      | 416x416    |.576 | .943 | .628  |184  | 
+| yolov4-tiny-3l  |Darknet      | 416x416    |.657 | .935 | .798  |183  |  
+| yolov4          |Darknet      | 416x416    |.559 | .915 | .644  |28   |
+| yolov4-csp      |Darknet      | 512x512    |.619 | .915 | .763  |26   |
+
 
 #### Experimental roadmap
 ![image](https://user-images.githubusercontent.com/63670587/112826240-02ff3400-908d-11eb-8a42-51dafbdc650d.png)
