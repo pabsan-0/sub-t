@@ -2,6 +2,8 @@
 ## In this directory:
 - [darknet-benchmarking-all-nets.sh](https://github.com/solder-fumes-asthma/sub-t/blob/master/training-and-benchmarking/darknet/darknet-benchmarking/darknet-benchmarking-all-nets.sh): Shell script to be run from bash to benchmark various darknet models. This makes use of a specific folder structure, review the script to check if it will match yours & adapt if neccessary. It will generate a series of temporary files that then will later move to a dump folder, leaving the FPS and MS COCO mAP results in this directory in text files. **For the purpose of benchmarking, this is the only file to be run, and wuill call other scripts on this folder itself.**
 
+- [assets](https://github.com/solder-fumes-asthma/sub-t/tree/master/training-and-benchmarking/darknet/darknet-benchmarking/assets): Contains json files with the test split of the PPU-6 dataset.
+
 - [batch-annotate.py](https://github.com/solder-fumes-asthma/sub-t/blob/master/training-and-benchmarking/darknet/darknet-benchmarking/batch-annotate.py): This python script will annotate a series of pictures with a set of bounding boxes that will read from a darknet output text file.
 
 - [darknet_2_coco_detections.py](https://github.com/solder-fumes-asthma/sub-t/blob/master/training-and-benchmarking/darknet/darknet-benchmarking/darknet_2_coco_detections.py): Creates a json file in MS COCO format for predictions made with darknet.
