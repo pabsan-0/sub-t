@@ -39,6 +39,10 @@
 \* FPS benchmarked on NVIDIA GTX 1060-mobile  
 \*\* FPS benchmarking on small networks can vary up to 20 FPS depending on simultaneous computer processes
 
+
+
+
+
 #### Full output + inferred test set (ignore these)
 - YOLOv4-tiny: [yolov4-tiny-416-6](https://drive.google.com/file/d/1kGqmUowvL5ePiV0n4fvkYvy-2fD0FYwi/view?usp=sharing)
 - YOLOv4-tiny-3l: [yolov4-tiny-3l-416-6](https://drive.google.com/file/d/1qCwnTSipnOD12DV5JW_GnpsAzX_MVxtB/view?usp=sharing)
@@ -47,3 +51,9 @@
 - YOLOv4x-mish: [yolov4x-mish-640-6](https://drive.google.com/file/d/1F4Fv2ENhwJ_QtK_FDB84PO1oP7ZiImJ_/view?usp=sharing)
 - EfficientDet-D0: [effdet-d0-512-6](https://drive.google.com/file/d/1ngbk1b-gYV6nHC40hP6jXGsUmyMzChUM/view?usp=sharing)
 - EfficientDet-D1: [effdet-d1-512-6](https://drive.google.com/file/d/1OV69bZeyq9pfkXmlMrGG4KsfX4ZMMQpD/view?usp=sharing)
+
+
+
+![pp6-640](https://user-images.githubusercontent.com/63670587/113898505-3dbf4580-97cc-11eb-9a9a-7c52c9793751.png)
+![pp6-baseline](https://user-images.githubusercontent.com/63670587/113898510-3e57dc00-97cc-11eb-8cc4-f9bbe7af7ef3.png)
+![PPU-6](https://user-images.githubusercontent.com/63670587/113898512-3e57dc00-97cc-11eb-8aac-322dafb05cc9.png)
