@@ -3,8 +3,8 @@
 [overall-roadmap-planning](https://user-images.githubusercontent.com/63670587/112643820-1029e200-8e45-11eb-8b6b-9b7c048f374d.png)
 ![image](https://user-images.githubusercontent.com/63670587/112826240-02ff3400-908d-11eb-8a42-51dafbdc650d.png)
 
-## Model benchmarking
-### Benchmarking on the [PPU-6 dataset](https://drive.google.com/file/d/1D-oBYlsD2c4dWnMyhtav1_mYnqfNK-ep/view?usp=sharing)
+
+## Benchmarking on the [PPU-6 dataset](https://drive.google.com/file/d/1D-oBYlsD2c4dWnMyhtav1_mYnqfNK-ep/view?usp=sharing)
 
 | Model           | Platform    | Train size | mAP |AP@0.5|AP@0.75| FPS | Files + demo |
 |:-------------   |:------      | :---------:|:---:|:----:|:-----:|:---:|:------ |
@@ -18,7 +18,7 @@
 
 \* FPS benchmarked on NVIDIA GTX 1060-mobile
 
-### Benchmarking on the PP-6 dataset ([PPU-6](https://drive.google.com/file/d/1D-oBYlsD2c4dWnMyhtav1_mYnqfNK-ep/view?usp=sharing) without SynthDet samples)
+## Benchmarking on the PP-6 dataset ([PPU-6](https://drive.google.com/file/d/1D-oBYlsD2c4dWnMyhtav1_mYnqfNK-ep/view?usp=sharing) without SynthDet samples)
 
 #### Test size equals train size
 | Model           | Platform    | Train size |Test size| mAP      |AP@0.5|AP@0.75| FPS |
@@ -36,7 +36,7 @@
 | yolov4          |Darknet      | 416x416    | 640x640 | .568 | .915 | .648  |28   |
 | yolov4-csp      |Darknet      | 512x512    | 640x640 | .619 | .911 | .711  |26   |
 
-\* FPS benchmarked on NVIDIA GTX 1060-mobile
+\* FPS benchmarked on NVIDIA GTX 1060-mobile  
 \*\* FPS benchmarking on small networks can vary up to 20 FPS depending on simultaneous computer processes
 
 #### Full output + inferred test set (ignore these)
