@@ -6,13 +6,9 @@
 
 ##  Model Benchmarking on the [PPU-6 dataset](https://drive.google.com/file/d/1D-oBYlsD2c4dWnMyhtav1_mYnqfNK-ep/view?usp=sharing)
 
-
-
-
-#### Benchmarking summary
 | Model           | Platform    | Image size | mAP |AP@0.5|AP@0.75| FPS | Files + demo |
 |:-------------   |:------      | :---------:|:---:|:----:|:-----:|:---:|:------ |
-| yolov4-tiny     |Darknet      | 416x416    |.712 | .946 | .875  |197  |[yolov4-tiny-416-6](https://drive.google.com/file/d/1kGqmUowvL5ePiV0n4fvkYvy-2fD0FYwi/view?usp=sharing)|
+| yolov4-tiny     |Darknet      | 416x416    |**.712** | **.946** | **.875**  |**197**  |[yolov4-tiny-416-6](https://drive.google.com/file/d/1kGqmUowvL5ePiV0n4fvkYvy-2fD0FYwi/view?usp=sharing)|
 | yolov4-tiny-3l  |Darknet      | 416x416    |.516 | .912 | .532  |182  |[yolov4-tiny-3l-416-6](https://drive.google.com/file/d/1qCwnTSipnOD12DV5JW_GnpsAzX_MVxtB/view?usp=sharing)|
 | yolov4          |Darknet      | 416x416    |.619 | .931 | .735  |28   |[yolov4-416-6](https://drive.google.com/file/d/1gs-wTb1AA3CxVfU7_mv0UDrvLsM0IHDT/view?usp=sharing)|
 | yolov4-csp      |Darknet      | 512x512    |.544 | .907 | .602  |26   |[yolov4-csp-512-6](https://drive.google.com/file/d/1GzztGVBPQjT8sqj8udEfFVUCaF6gCEX-/view?usp=sharing)|
@@ -23,13 +19,12 @@
 \* FPS benchmarked on NVIDIA GTX 1060-mobile
 
 
-##  Model Benchmarking on the PP-6 dataset (equal to [PPU-6](https://drive.google.com/file/d/1D-oBYlsD2c4dWnMyhtav1_mYnqfNK-ep/view?usp=sharing) without SynthDet samples)
+##  Model Benchmarking on the PP-6 dataset ([PPU-6](https://drive.google.com/file/d/1D-oBYlsD2c4dWnMyhtav1_mYnqfNK-ep/view?usp=sharing) without SynthDet samples)
 
-#### Benchmarking summary
 | Model           | Platform    | Image size | mAP |AP@0.5|AP@0.75| FPS |
 |:-------------   |:------      | :---------:|:---:|:----:|:-----:|:---:| 
-| yolov4-tiny     |Darknet      | 416x416    |.576 | .943 | .628  |184  | 
-| yolov4-tiny-3l  |Darknet      | 416x416    |.657 | .935 | .798  |183  |  
+| yolov4-tiny     |Darknet      | 416x416    |.576 | **.943** | .628  |**184** | 
+| yolov4-tiny-3l  |Darknet      | 416x416    |**.657** | .935 | **.798**  |183  |  
 | yolov4          |Darknet      | 416x416    |.559 | .915 | .644  |28   |
 | yolov4-csp      |Darknet      | 512x512    |.619 | .915 | .763  |26   |
 
