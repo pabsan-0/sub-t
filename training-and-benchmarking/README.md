@@ -20,15 +20,17 @@
 
 ### Benchmarking on the PP-6 dataset ([PPU-6](https://drive.google.com/file/d/1D-oBYlsD2c4dWnMyhtav1_mYnqfNK-ep/view?usp=sharing) without SynthDet samples)
 
-| Model           | Platform    | Train size |Test size| mAP |AP@0.5|AP@0.75| FPS |
-|:-------------   |:------      | :---------:|:-------:| :---:|:---:|:----:|:-----:|:---:| 
-| yolov4-tiny     |Darknet      | 416x416    | 416x416 | .576 | **.943** | .628  |**184** | 
+#### Test size equals train size
+| Model           | Platform    | Train size |Test size| mAP      |AP@0.5|AP@0.75| FPS |
+|:-------------   |:------      | :---------:|:-------:| :---:    |:---:|:----:|:-----:|
+| yolov4-tiny     |Darknet      | 416x416    | 416x416 |   .576   | **.943** | .628  |**184** | 
 | yolov4-tiny-3l  |Darknet      | 416x416    | 416x416 | **.657** | .935 | **.798**  |183  |  
-| yolov4          |Darknet      | 416x416    | 416x416 | .559 | .915 | .644  |28   |
-| yolov4-csp      |Darknet      | 512x512    | 416x416 | .619 | .915 | .763  |26   |
+| yolov4          |Darknet      | 416x416    | 416x416 |   .559   | .915 | .644  |28   |
+| yolov4-csp      |Darknet      | 512x512    | 512x512 |   .619   | .915 | .763  |26   |  
 
+#### Fixed test size
 | Model           | Platform    | Train size |Test size| mAP |AP@0.5|AP@0.75| FPS |
-|:-------------   |:------      | :---------:|:-------:| :---:|:---:|:----:|:-----:|:---:| 
+|:-------------   |:------      | :---------:|:-------:| :---:|:---:|:----:|:-----:|
 | yolov4-tiny     |Darknet      | 416x416    | 640x640 | .574 | **.946** | .628  |**194** | 
 | yolov4-tiny-3l  |Darknet      | 416x416    | 640x640 | **.668** | .937 | **.818**  | 173  |  
 | yolov4          |Darknet      | 416x416    | 640x640 | .568 | .915 | .648  |28   |
