@@ -1,8 +1,7 @@
 # Training and benchmarking object detection models
 ##  Training roadmap
 [overall-roadmap-planning](https://user-images.githubusercontent.com/63670587/112643820-1029e200-8e45-11eb-8b6b-9b7c048f374d.png)
-![image](https://user-images.githubusercontent.com/63670587/112984909-c6e8d380-915f-11eb-9516-c5a0331f28db.png)
-
+![image](https://user-images.githubusercontent.com/63670587/112826240-02ff3400-908d-11eb-8a42-51dafbdc650d.png)
 
 ##  Model Benchmarking on the [PPU-6 dataset](https://drive.google.com/file/d/1D-oBYlsD2c4dWnMyhtav1_mYnqfNK-ep/view?usp=sharing)
 
@@ -29,10 +28,7 @@
 | yolov4-csp      |Darknet      | 512x512    |.619 | .915 | .763  |26   |
 
 
-#### Experimental roadmap
-![image](https://user-images.githubusercontent.com/63670587/112826240-02ff3400-908d-11eb-8a42-51dafbdc650d.png)
-
-#### Full output + inferred test set
+#### Full output + inferred test set (ignore these)
 - YOLOv4-tiny: [yolov4-tiny-416-6](https://drive.google.com/file/d/1kGqmUowvL5ePiV0n4fvkYvy-2fD0FYwi/view?usp=sharing)
 - YOLOv4-tiny-3l: [yolov4-tiny-3l-416-6](https://drive.google.com/file/d/1qCwnTSipnOD12DV5JW_GnpsAzX_MVxtB/view?usp=sharing)
 - YOLOv4: [yolov4-416-6](https://drive.google.com/file/d/1gs-wTb1AA3CxVfU7_mv0UDrvLsM0IHDT/view?usp=sharing)
