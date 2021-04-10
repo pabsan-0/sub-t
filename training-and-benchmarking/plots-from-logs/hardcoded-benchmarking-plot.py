@@ -2,7 +2,10 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 
-
+'''
+This script is meant to plot barplots with the AP metrics obtained from COCO
+as displayed in the github tables. Values are to be harcoded in this script.
+'''
 ## PPU6 BASELINE RESOLUTION ---------------------------------------------------------
 
 labels = '''\
