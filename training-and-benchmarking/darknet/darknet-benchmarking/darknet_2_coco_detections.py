@@ -10,8 +10,7 @@ ARGS:
     name of the output detection file in COCO json (will overwrite)
 
 
-of this
-shape...:
+Expected predictions on input file are of this shape...:
 
 /home/pablo/YOLOv4/PPU-6/test/25_exyn_bag15_rgb_frame1500305.png: Predicted in 134.026000 milli-seconds.
 drill: 99%	(left_x:  406   top_y:  344   width:   42   height:   53)
