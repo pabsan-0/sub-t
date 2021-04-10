@@ -7,6 +7,12 @@ from sys import argv
 This script is meant to read a yolo log file with batch inferred results
 and draw predicted bounding boxes on the source pictures.
 
+ARGS:
+    Text file 1 *
+    Text file 2 (optional)
+    ...
+    Text file N (optional)
+
 The file needed as input can be obtained by running this command:
 ./darknet detector test PATH/obj.data PATH/yolov4.cfg PATH/yolov4.weights -dont_show -ext_output < PATH/test.txt > results_yo.txt
 
