@@ -8,13 +8,21 @@
 
 | Model           | Platform    | Train size | mAP |AP@0.5|AP@0.75| FPS | Files + demo |
 |:-------------   |:------      | :---------:|:---:|:----:|:-----:|:---:|:------ |
-| yolov4-tiny     |Darknet      | 416x416    |**.712** | **.946** | **.875**  |**197**  |[yolov4-tiny-416-6](https://drive.google.com/file/d/1kGqmUowvL5ePiV0n4fvkYvy-2fD0FYwi/view?usp=sharing)|
-| yolov4-tiny-3l  |Darknet      | 416x416    |.516 | .912 | .532  |182  |[yolov4-tiny-3l-416-6](https://drive.google.com/file/d/1qCwnTSipnOD12DV5JW_GnpsAzX_MVxtB/view?usp=sharing)|
-| yolov4          |Darknet      | 416x416    |.619 | .931 | .735  |28   |[yolov4-416-6](https://drive.google.com/file/d/1gs-wTb1AA3CxVfU7_mv0UDrvLsM0IHDT/view?usp=sharing)|
-| yolov4-csp      |Darknet      | 512x512    |.544 | .907 | .602  |26   |[yolov4-csp-512-6](https://drive.google.com/file/d/1GzztGVBPQjT8sqj8udEfFVUCaF6gCEX-/view?usp=sharing)|
-| yolov4x-mish    |Darknet      | 640x640    |.615 | .922 | .751  |9    |[yolov4x-mish-640-6](https://drive.google.com/file/d/1F4Fv2ENhwJ_QtK_FDB84PO1oP7ZiImJ_/view?usp=sharing)|
-| efficientdet-d0 |google-automl| 512x512    |.304 | .512 | .350  |51   |[effdet-d0-512-6](https://drive.google.com/file/d/1ngbk1b-gYV6nHC40hP6jXGsUmyMzChUM/view?usp=sharing)|
-| efficientdet-d1 |google-automl| 640x640    |.319 | .551 | .345  |23   |[effdet-d1-640-6](https://drive.google.com/file/d/1OV69bZeyq9pfkXmlMrGG4KsfX4ZMMQpD/view?usp=sharing)|
+| yolov4-tiny     |Darknet      | 416x416    |**.712** | **.946** | **.875**  |**197**  |[yolov4-tiny-416-6][]|
+| yolov4-tiny-3l  |Darknet      | 416x416    |.516 | .912 | .532  |182  |[yolov4-tiny-3l-416-6][]|
+| yolov4          |Darknet      | 416x416    |.619 | .931 | .735  |28   |[yolov4-416-6][]|
+| yolov4-csp      |Darknet      | 512x512    |.544 | .907 | .602  |26   |[yolov4-csp-512-6][]|
+| yolov4x-mish    |Darknet      | 640x640    |.615 | .922 | .751  |9    |[yolov4x-mish-640-6][]|
+| efficientdet-d0 |google-automl| 512x512    |.304 | .512 | .350  |51   |[effdet-d0-512-6][]|
+| efficientdet-d1 |google-automl| 640x640    |.319 | .551 | .345  |23   |[effdet-d1-640-6][]|
+
+[yolov4-tiny-416-6]: https://drive.google.com/file/d/1kGqmUowvL5ePiV0n4fvkYvy-2fD0FYwi/view?usp=sharing
+[yolov4-tiny-3l-416-6]: https://drive.google.com/file/d/1qCwnTSipnOD12DV5JW_GnpsAzX_MVxtB/view?usp=sharing
+[yolov4-416-6]: https://drive.google.com/file/d/1gs-wTb1AA3CxVfU7_mv0UDrvLsM0IHDT/view?usp=sharing
+[yolov4-csp-512-6]: https://drive.google.com/file/d/1GzztGVBPQjT8sqj8udEfFVUCaF6gCEX-/view?usp=sharing
+[yolov4x-mish-640-6]: https://drive.google.com/file/d/1F4Fv2ENhwJ_QtK_FDB84PO1oP7ZiImJ_/view?usp=sharing
+[effdet-d0-512-6]: https://drive.google.com/file/d/1ngbk1b-gYV6nHC40hP6jXGsUmyMzChUM/view?usp=sharing
+[effdet-d1-640-6]: https://drive.google.com/file/d/1OV69bZeyq9pfkXmlMrGG4KsfX4ZMMQpD/view?usp=sharing
 
 \* FPS benchmarked on NVIDIA GTX 1060-mobile
 
