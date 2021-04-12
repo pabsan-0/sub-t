@@ -1,9 +1,25 @@
 # Training and benchmarking object detection models
-##  Training roadmap
+Content for the training and benchmarking of the CNN-based oject detectors yolov4-tiny, yolo4-tiny-3l, yolov4, yolov4-csp, yolov4x-mish, efficientdet-d0 & efficientdet-d1 on a 6-class detection task.
+
+
+
+##  In this directory:
+- [darknet][]: Holds assets and scripts for working with darknet models. 
+- [efficientdet][]: Holds assets and scripts for working with efficient-det models.
+- [plots-from-logs][]: Holds a series of scripts to plot various graphs to analyze training and results.
+- [obj.names][]: Text file holding the names of the classes to be identified, in key order. Inherited from YOLO-format annotations.
+
+[darknet]: https://github.com/solder-fumes-asthma/sub-t/tree/master/training-and-benchmarking/darknet
+[efficientdet]: https://github.com/solder-fumes-asthma/sub-t/tree/master/training-and-benchmarking/efficientdet
+[plots-from-logs]: https://github.com/solder-fumes-asthma/sub-t/tree/master/training-and-benchmarking/plots-from-logs
+[obj.names]: https://github.com/solder-fumes-asthma/sub-t/blob/master/training-and-benchmarking/obj.names
+
+##  Training & benchmarking roadmap
 [overall-roadmap-planning](https://user-images.githubusercontent.com/63670587/112643820-1029e200-8e45-11eb-8b6b-9b7c048f374d.png)
 ![image](https://user-images.githubusercontent.com/63670587/112826240-02ff3400-908d-11eb-8a42-51dafbdc650d.png)
 
 
+# Results
 ## Benchmarking on the [PPU-6 dataset](https://drive.google.com/file/d/1D-oBYlsD2c4dWnMyhtav1_mYnqfNK-ep/view?usp=sharing)
 
 | Model           | Platform    | Train size | mAP |AP@0.5|AP@0.75| FPS | Files + demo |
@@ -25,6 +41,8 @@
 [effdet-d1-640-6]: https://drive.google.com/file/d/1OV69bZeyq9pfkXmlMrGG4KsfX4ZMMQpD/view?usp=sharing
 
 \* FPS benchmarked on NVIDIA GTX 1060-mobile
+
+<img src="https://user-images.githubusercontent.com/63670587/113900759-73652e00-97ce-11eb-978c-cb6c536b9172.png" height="300">
 
 ## Benchmarking on the PP-6 dataset ([PPU-6](https://drive.google.com/file/d/1D-oBYlsD2c4dWnMyhtav1_mYnqfNK-ep/view?usp=sharing) without SynthDet samples)
 
@@ -48,21 +66,7 @@
 \*\* FPS benchmarking on small networks can vary up to 20 FPS depending on simultaneous computer processes
 
 
+<img src="https://user-images.githubusercontent.com/63670587/113900764-73fdc480-97ce-11eb-9629-cebc75e1ad7b.png" height="300">
+<img src="https://user-images.githubusercontent.com/63670587/113900765-74965b00-97ce-11eb-9e17-be0ff010c8b4.png" height="300">
 
-
-
-#### Full output + inferred test set (ignore these)
-- YOLOv4-tiny: [yolov4-tiny-416-6](https://drive.google.com/file/d/1kGqmUowvL5ePiV0n4fvkYvy-2fD0FYwi/view?usp=sharing)
-- YOLOv4-tiny-3l: [yolov4-tiny-3l-416-6](https://drive.google.com/file/d/1qCwnTSipnOD12DV5JW_GnpsAzX_MVxtB/view?usp=sharing)
-- YOLOv4: [yolov4-416-6](https://drive.google.com/file/d/1gs-wTb1AA3CxVfU7_mv0UDrvLsM0IHDT/view?usp=sharing)
-- YOLOv4-csp: [yolov4-csp-512-6](https://drive.google.com/file/d/1GzztGVBPQjT8sqj8udEfFVUCaF6gCEX-/view?usp=sharing)
-- YOLOv4x-mish: [yolov4x-mish-640-6](https://drive.google.com/file/d/1F4Fv2ENhwJ_QtK_FDB84PO1oP7ZiImJ_/view?usp=sharing)
-- EfficientDet-D0: [effdet-d0-512-6](https://drive.google.com/file/d/1ngbk1b-gYV6nHC40hP6jXGsUmyMzChUM/view?usp=sharing)
-- EfficientDet-D1: [effdet-d1-512-6](https://drive.google.com/file/d/1OV69bZeyq9pfkXmlMrGG4KsfX4ZMMQpD/view?usp=sharing)
-
-
-
-![pp-6-baseline](https://user-images.githubusercontent.com/63670587/113900759-73652e00-97ce-11eb-978c-cb6c536b9172.png)
-![pp-6-fixedres](https://user-images.githubusercontent.com/63670587/113900764-73fdc480-97ce-11eb-9629-cebc75e1ad7b.png)
-![ppu-6](https://user-images.githubusercontent.com/63670587/113900765-74965b00-97ce-11eb-9e17-be0ff010c8b4.png)
 
