@@ -20,6 +20,9 @@ Content for the training and benchmarking of the CNN-based oject detectors yolov
 
 
 # Results
+\* FPS benchmarked on NVIDIA GTX 1060-mobile  
+\*\* FPS benchmarking on small networks can vary up to 20 FPS depending on simultaneous computer processes
+
 ## Benchmarking on the [PPU-6 dataset](https://drive.google.com/file/d/1D-oBYlsD2c4dWnMyhtav1_mYnqfNK-ep/view?usp=sharing)
 
 | Model           | Platform    | Train size | mAP |AP@0.5|AP@0.75| FPS | Files + demo |
@@ -40,9 +43,8 @@ Content for the training and benchmarking of the CNN-based oject detectors yolov
 [effdet-d0-512-6]: https://drive.google.com/file/d/1ngbk1b-gYV6nHC40hP6jXGsUmyMzChUM/view?usp=sharing
 [effdet-d1-640-6]: https://drive.google.com/file/d/1OV69bZeyq9pfkXmlMrGG4KsfX4ZMMQpD/view?usp=sharing
 
-\* FPS benchmarked on NVIDIA GTX 1060-mobile
+<img src="https://user-images.githubusercontent.com/63670587/113900765-74965b00-97ce-11eb-9e17-be0ff010c8b4.png" height="300">
 
-<img src="https://user-images.githubusercontent.com/63670587/113900759-73652e00-97ce-11eb-978c-cb6c536b9172.png" height="300">
 
 ## Benchmarking on the PP-6 dataset ([PPU-6](https://drive.google.com/file/d/1D-oBYlsD2c4dWnMyhtav1_mYnqfNK-ep/view?usp=sharing) without SynthDet samples)
 
@@ -54,6 +56,8 @@ Content for the training and benchmarking of the CNN-based oject detectors yolov
 | yolov4          |Darknet      | 416x416    | 416x416 |   .559   | .915 | .644  |28   |
 | yolov4-csp      |Darknet      | 512x512    | 512x512 |   .619   | .915 | .763  |26   |  
 
+<img src="https://user-images.githubusercontent.com/63670587/113900759-73652e00-97ce-11eb-978c-cb6c536b9172.png" height="300">
+
 #### Fixed test size
 | Model           | Platform    | Train size |Test size| mAP |AP@0.5|AP@0.75| FPS |
 |:-------------   |:------      | :---------:|:-------:| :---:|:---:|:----:|:-----:|
@@ -62,11 +66,8 @@ Content for the training and benchmarking of the CNN-based oject detectors yolov
 | yolov4          |Darknet      | 416x416    | 640x640 | .568 | .915 | .648  |28   |
 | yolov4-csp      |Darknet      | 512x512    | 640x640 | .619 | .911 | .711  |26   |
 
-\* FPS benchmarked on NVIDIA GTX 1060-mobile  
-\*\* FPS benchmarking on small networks can vary up to 20 FPS depending on simultaneous computer processes
-
-
 <img src="https://user-images.githubusercontent.com/63670587/113900764-73fdc480-97ce-11eb-9629-cebc75e1ad7b.png" height="300">
-<img src="https://user-images.githubusercontent.com/63670587/113900765-74965b00-97ce-11eb-9e17-be0ff010c8b4.png" height="300">
+
+
 
 
