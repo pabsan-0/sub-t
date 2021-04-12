@@ -14,9 +14,9 @@ The scripts will lead the way, but find here an outline of what is happening:
   - Over time, new model weight files will be generated. A "best" weight file will be kept aside until a new one is generated with better AP on the valid set. 
   - Once training is finished, the optimal output weight file to use will be the "best" one. If validation AP hasnt't stalled (seen from plot), manually rerun training parting from these weights.
 - Inference:
-  - Batch inference with image output is not supported by default in AlexeyAB's branch of darknet, the procedure to follow for inferring and retrieving batches of labelled images is done by exporting results to a text file then modifying the pictures based on what's recorded there. Run the following command to export batch inference results into a text file: 
+  - Batch inference with image output is not supported by default in AlexeyAB's branch of darknet, the procedure to follow for inferring and retrieving batches of labelled images is done by exporting results to a text file then modifying the pictures based on what's recorded there.
   - Run the python script FILE to apply the labels contained in this text file to the pointed images and store them in a new directory.
 - Benchmarking on COCO metrics:
-  - Run the following command to export batch inference results into a text file:
+  - Export batch inference results into a text file.
   - Then evaluate the output with the tools available at the [MS COCO repository](https://github.com/cocodataset/cocoapi). This requires additional steps that can be found in the [darknet-benchmarking](https://github.com/solder-fumes-asthma/sub-t/tree/master/training-and-benchmarking/darknet/darknet-benchmarking) dir.
   
