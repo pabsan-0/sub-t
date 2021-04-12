@@ -58,16 +58,24 @@ Content for the training and benchmarking of the CNN-based oject detectors yolov
 
 <img src="https://user-images.githubusercontent.com/63670587/113900759-73652e00-97ce-11eb-978c-cb6c536b9172.png" height="300">
 
-#### Fixed test size
-| Model           | Platform    | Train size |Test size| mAP |AP@0.5|AP@0.75| FPS |
-|:-------------   |:------      | :---------:|:-------:| :---:|:---:|:----:|:-----:|
-| yolov4-tiny     |Darknet      | 416x416    | 640x640 | .574 | **.946** | .628  |**194** | 
-| yolov4-tiny-3l  |Darknet      | 416x416    | 640x640 | **.668** | .937 | **.818**  | 173  |  
-| yolov4          |Darknet      | 416x416    | 640x640 | .568 | .915 | .648  |28   |
-| yolov4-csp      |Darknet      | 512x512    | 640x640 | .619 | .911 | .711  |26   |
+#### Fixed test size - canon network size
+| Model           | Platform    | Train size |Network size | Test size| mAP |AP@0.5|AP@0.75| FPS |
+|:-------------   |:------      | :---------:|:-------:    |:-------:| :---:|:---:|:----:|:-----:|
+| yolov4-tiny     |Darknet      | 416x416    | 416x416     | 640x640 | .574 | **.946** | .628  |**194** | 
+| yolov4-tiny-3l  |Darknet      | 416x416    | 416x416     | 640x640 | **.668** | .937 | **.818**  | 173  |  
+| yolov4          |Darknet      | 416x416    | 416x416     | 640x640 |  .568 | .915 | .648  |28   |
+| yolov4-csp      |Darknet      | 512x512    | 512x512     | 640x640 | .619 | .911 | .711  |26   |
 
 <img src="https://user-images.githubusercontent.com/63670587/113900764-73fdc480-97ce-11eb-9629-cebc75e1ad7b.png" height="300">
 
+
+#### Fixed test size - higher network size
+| Model           | Platform    | Train size | Network size |Test size| mAP |AP@0.5|AP@0.75| FPS |
+|:-------------   |:------      | :---------:|:-------:     |:-------:| :---:|:---:|:----:|:-----:|
+| yolov4-tiny     |Darknet      | 416x416    | 640x640      |640x640  | .503 | .897 | .519 | 102  | 
+| yolov4-tiny-3l  |Darknet      | 416x416    | 640x640      |640x640  | .592 | .896 | .722 | 97   |  
+| yolov4          |Darknet      | 416x416    | 640x640      |640x640  | .499 | .874 | .513 | 13   |
+| yolov4-csp      |Darknet      | 512x512    | 640x640      |640x640  | .601 | .914 | .718 | 16   |
 
 
 
