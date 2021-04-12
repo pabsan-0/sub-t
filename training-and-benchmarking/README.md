@@ -1,6 +1,9 @@
 # Training and benchmarking object detection models
 Content for the training and benchmarking of the CNN-based oject detectors yolov4-tiny, yolo4-tiny-3l, yolov4, yolov4-csp, yolov4x-mish, efficientdet-d0 & efficientdet-d1 on a 6-class detection task.
 
+[initial-roadmap-planning-deprecated](https://user-images.githubusercontent.com/63670587/112643820-1029e200-8e45-11eb-8b6b-9b7c048f374d.png)
+
+<img src="https://user-images.githubusercontent.com/63670587/112826240-02ff3400-908d-11eb-8a42-51dafbdc650d.png" height="700">
 
 
 ##  In this directory:
@@ -14,9 +17,6 @@ Content for the training and benchmarking of the CNN-based oject detectors yolov
 [plots-from-logs]: https://github.com/solder-fumes-asthma/sub-t/tree/master/training-and-benchmarking/plots-from-logs
 [obj.names]: https://github.com/solder-fumes-asthma/sub-t/blob/master/training-and-benchmarking/obj.names
 
-##  Training & benchmarking roadmap
-[overall-roadmap-planning](https://user-images.githubusercontent.com/63670587/112643820-1029e200-8e45-11eb-8b6b-9b7c048f374d.png)
-![image](https://user-images.githubusercontent.com/63670587/112826240-02ff3400-908d-11eb-8a42-51dafbdc650d.png)
 
 
 # Results
