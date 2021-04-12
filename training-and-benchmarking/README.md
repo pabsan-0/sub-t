@@ -18,6 +18,30 @@ Content for the training and benchmarking of the CNN-based oject detectors yolov
 [obj.names]: https://github.com/solder-fumes-asthma/sub-t/blob/master/training-and-benchmarking/obj.names
 
 
+## Roadmap:
+- **Training all models on default PPU-6**:
+  - Default out-of-the-box training on official models. 
+  - Observations: 
+    - Tiny models outperform regular sizes (overfitting suspicion)         ⟶ *retrain on only real data*
+    - YOLOv4-tiny outperforms YOLOv4-tiny-3l                               ⟶ *deeper experiment with anchor sizes / layer attribution*
+    - YOLOs blow efficientdets out of of the water on few-class detections ⟶ *discard efficientdets from further experiments*
+
+- **Training some darknet models on PP-6**
+  - Removed synthetic training data to check if overfitting was taking place in the bigger models.
+  - Experimented with changing resolutions since this collection of models was smaller:
+    - [Train size, Network size,  Test image size] = `[train_size, train_size, train_size]`
+    - [Train size, Network size,  Test image size] = `[train_size, train_size, 640x640]`
+    - [Train size, Network size,  Test image size] = `[train_size, 640x640, 640x640]`
+  - Observations
+    - Variying results, tiny models still predominant                       ⟶ *no overfitting they are best architecture-wise for this small 6-class task*
+    - YOLOv4-tiny-3l outperforms YOLOv4-tiny                                ⟶ *deeper experiment with anchor sizes / layer attribution*
+    
+- **Adjusting anchor sizes on best performing models**. Anchors not only impact expected aspect ratio but overall size. All yolo layers have to carry same anchors value, the `masks=` index is what decides what anchors are linked to each yolo layer
+  - Modified anchors on yolov4-tiny (2 yolo layers + 6 anchor pairs). 
+    - Anchors division: [0 1 2],[3 4 5].
+    - Filters before each yolo layer: `filters = (classes + 5) * masks_per_layer`
+    - Detected a mistake in the original yolov4-tiny.cfg because mask=0 was not attributed to any layer.
+
 
 # Results
 \* FPS benchmarked on NVIDIA GTX 1060-mobile  
