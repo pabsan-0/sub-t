@@ -70,7 +70,7 @@ Content for the training and benchmarking of the CNN-based oject detectors yolov
 <img src="https://user-images.githubusercontent.com/63670587/113900765-74965b00-97ce-11eb-9e17-be0ff010c8b4.png" height="300">
 
 
-## Benchmarking on the PP-6 dataset ([PPU-6](https://drive.google.com/file/d/1D-oBYlsD2c4dWnMyhtav1_mYnqfNK-ep/view?usp=sharing) without SynthDet samples)
+## Benchmarking on the PP-6 dataset ([PPU-6](https://drive.google.com/file/d/1D-oBYlsD2c4dWnMyhtav1_mYnqfNK-ep/view?usp=sharing) without SynthDet samples). Removed synthetic data from training set and experimented different network and test image sizes.
 
 #### Test size equals train size
 | Model           | Platform    | Train size |Test size| mAP      |AP@0.5|AP@0.75| FPS |
@@ -102,4 +102,9 @@ Content for the training and benchmarking of the CNN-based oject detectors yolov
 | yolov4-csp      |Darknet      | 512x512    | 640x640      |640x640  | .601 | .914 | .718 | 16   |
 
 
+## Benchmarking tiny models on the ([PPU-6 dataset](https://drive.google.com/file/d/1D-oBYlsD2c4dWnMyhtav1_mYnqfNK-ep/view?usp=sharing) without SynthDet samples). Adjusted anchors to fit our training data instead of recycling the MS COCO default ones.
 
+| Model           | Platform    | Network size | mAP     | AP@0.5| AP@0.75 | 
+|:-------------   |:------      | :---------:|:-------:| :---: |:---: |
+| yolov4-tiny     |Darknet      | 416x416    | **.692**    | **.942**  | **.829** | 
+| yolov4-tiny-3l  |Darknet      | 416x416    | .658    | .929  | .817 | 
