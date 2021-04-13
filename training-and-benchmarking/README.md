@@ -101,10 +101,15 @@ Content for the training and benchmarking of the CNN-based oject detectors yolov
 | yolov4          |Darknet      | 416x416    | 640x640      |640x640  | .499 | .874 | .513 | 13   |
 | yolov4-csp      |Darknet      | 512x512    | 640x640      |640x640  | .601 | .914 | .718 | 16   |
 
+<img src="https://user-images.githubusercontent.com/63670587/114569558-62f0ff80-9c75-11eb-8189-e35090543ea3.png" height="300">
+
 
 ## Benchmarking tiny models on the ([PPU-6 dataset](https://drive.google.com/file/d/1D-oBYlsD2c4dWnMyhtav1_mYnqfNK-ep/view?usp=sharing) without SynthDet samples). Adjusted anchors to fit our training data instead of recycling the MS COCO default ones.
 
 | Model           | Platform    | Network size | mAP     | AP@0.5| AP@0.75 | 
 |:-------------   |:------      | :---------:|:-------:| :---: |:---: |
 | yolov4-tiny     |Darknet      | 416x416    | **.692**    | **.942**  | **.829** | 
-| yolov4-tiny-3l  |Darknet      | 416x416    | .658    | .929  | .817 | 
+| yolov4-tiny-3l  |Darknet      | 416x416    | .658    | .929  | .817 |
+
+<img src="https://user-images.githubusercontent.com/63670587/114568366-59b36300-9c74-11eb-9c11-a05b4e7334c8.png" height="300">
+
