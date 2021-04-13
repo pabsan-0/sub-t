@@ -1,0 +1,1 @@
+This folder holds fps and map tables extracted from the code shown in [darknet/darknet-benchmarking](https://github.com/solder-fumes-asthma/sub-t/tree/master/training-and-benchmarking/darknet/darknet-benchmarking)
