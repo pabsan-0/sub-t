@@ -1,0 +1,4 @@
+./generated-files-dump/results-yolov4-tiny-416.txt: 5.437034615384615 milli-seconds per image, or 183.9237876415948 FPS
+./generated-files-dump/results-yolov4-tiny-3l-416.txt: 5.4712211538461535 milli-seconds per image, or 182.77455286138837 FPS
+./generated-files-dump/results-yolov4-416.txt: 35.62186346153847 milli-seconds per image, or 28.072647043850388 FPS
+./generated-files-dump/results-yolov4-csp-512.txt: 38.49859807692308 milli-seconds per image, or 25.97497181590678 FPS
