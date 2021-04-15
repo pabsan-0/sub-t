@@ -17,14 +17,14 @@ Here you can find assets for implementing YOLO darknet networks that can infer o
     - `$ hostname -I` is the easiest way to find the host's ip.
     - I have no memory of how I discovered the raspberry IP but once it was over wifi it wasnt that complicated.
 - Access to the Raspberry Pi via SSH with `$ ssh pi@192.168.0.102` and follow the steps in [this guide to stream camera to http local server](https://tutorials-raspberrypi.com/raspberry-pi-security-camera-livestream-setup/):
-    - Preparatory steps
-            ```
-            $ sudo apt-get update
-            $ sudo apt-get upgrade
-            $ sudo apt-get install motion -y
+    - Preparatory steps  
+        ```
+        $ sudo apt-get update
+        $ sudo apt-get upgrade
+        $ sudo apt-get install motion -y
 
-            $ ls /dev/video*              # Check for video device (default will be video0)
-            $ sudo modprobe bcm2835-v4l2  # To inmediately display camera
+        $ ls /dev/video*              # Check for video device (default will be video0)
+        $ sudo modprobe bcm2835-v4l2  # To inmediately display camera
             ```
     - Check camera details witn `$ pi@raspberrypi:~ $ v4l2-ctl -V`
     - Open the motion config file with `$ sudo nano /etc/motion/motion.conf` and apply the following changes:
