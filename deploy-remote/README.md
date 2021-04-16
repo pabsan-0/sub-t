@@ -15,7 +15,7 @@ Here you can find assets for implementing YOLO darknet networks that can infer o
     - `$ arp` can be used to find the ethernet address of the raspberry.
 - Connect Raspberry Pi and host PC to wifi network and find the IP of both.
     - `$ hostname -I` is the easiest way to find the host's ip.
-    - I have no memory of how I discovered the raspberry IP but once it was over wifi it wasnt that complicated.
+    - Use the app FLING on android for quick and easy IP finding.
 - Access to the Raspberry Pi via SSH with `$ ssh pi@192.168.0.102` and follow the steps in [this guide to stream camera to http local server](https://tutorials-raspberrypi.com/raspberry-pi-security-camera-livestream-setup/):
     - Preparatory steps  
         ```
