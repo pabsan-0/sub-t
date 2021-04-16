@@ -74,3 +74,12 @@ Here you can find assets for implementing YOLO darknet networks that can infer o
   - 192.168.0.112:8070 (hostpc:8070): Json with inferring results
   - 192.168.0.112:8090 (hostpc:8090): Darknet output livestream
 - Stop the raspberry streaming service with `pi@raspberry:$ sudo service motion stop` 
+
+
+
+
+## Media
+https://user-images.githubusercontent.com/63670587/115000290-e93e5900-9ea2-11eb-8ace-d609afd0ee6b.mp4
+
+![11cd753d-1277-443a-89a9-1fdcf5cec88a](https://user-images.githubusercontent.com/63670587/115000318-f0fdfd80-9ea2-11eb-9941-3298baec0b19.jpg)
+
