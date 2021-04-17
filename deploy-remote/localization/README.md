@@ -15,3 +15,8 @@ This directory holds assets and test code for identifying the pose of a camera w
 
 
 ![crop_aruco](https://user-images.githubusercontent.com/63670587/115121167-82f42c00-9fb1-11eb-8cf1-296ede9e99be.png)
+
+### External links
+- [Python Open CV docs for camera calibration](https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_calib3d/py_calibration/py_calibration.html)
+- [Online Aruco marker generator](https://chev.me/arucogen/)
+- [Some docs with cv2.aruco examples](https://mecaruco2.readthedocs.io/en/latest/notebooks_rst/Aruco/Projet+calibration-Paul.html)
