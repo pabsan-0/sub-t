@@ -24,4 +24,4 @@ This directory holds assets and test code for identifying the pose of a camera w
 
 ![crop_aruco](https://user-images.githubusercontent.com/63670587/115121167-82f42c00-9fb1-11eb-8cf1-296ede9e99be.png)
 ![Screenshot from 2021-04-18 13-27-07](https://user-images.githubusercontent.com/63670587/115148801-8e9f2b80-a061-11eb-873e-d3434e3f2f78.png)
-
+![WhatsApp Image 2021-04-23 at 15 55 41](https://user-images.githubusercontent.com/63670587/115903992-8df10580-a464-11eb-825d-b37ae7dd5438.jpeg)
