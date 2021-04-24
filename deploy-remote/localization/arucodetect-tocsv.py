@@ -9,9 +9,13 @@ from sys import argv
 
 
 '''
-REVISION PENDING
-Use this script to receive live feed and find aruco patterns on it. Requires
-a callibrated camera matrix and distance vector, which are for now hardcoded.
+Use this script to receive live feed and find aruco patterns on it, then export
+the camera pose ON THE HORIZONTAL PLACE to a csv file, name of which specificied 
+as arg. Requires a callibrated camera matrix and distance vector.
+
+ARGS: FILENAME: text file in which to dump camera horizontal pose w/r to marker0
+
+DEPS: RedmiNote9Pro.nz: a file from which to load camera distortion matrix
 '''
 
 # initialize the video recorder from IP camera
@@ -67,7 +71,7 @@ while(True):
     # Capture frame-by-frame
     ret, frame = cap.read()
 
-    # reset measurements
+    # reset measurements to avoid issues (empyrical, no formal justification)
     x = float("nan")
     z = float("nan")
     yaw = float("nan")
