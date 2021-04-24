@@ -110,15 +110,19 @@ class KalmanFilter(object):
         self.D = D
         self.R = R
 
+        # Get state and measure vector dimensions from matrices
+        n_elements_x = A.shape[0]
+        n_elements_y = C.shape[0]
+
         # Kalman gains
-        self.L = np.zeros([6,3], dtype=np.float32)
-        self.P = np.zeros([6,6], dtype=np.float32)
+        self.L = np.zeros([n_elements_x, n_elements_y], dtype=np.float32)
+        self.P = np.zeros([n_elements_x, n_elements_x], dtype=np.float32)
 
         # Q coefficient
-        self.LL = np.eye(6)
+        self.LL = np.eye(n_elements_x)
 
         # Initial state vector
-        self.xhat = np.zeros([6], dtype=np.float32)
+        self.xhat = np.zeros([n_elements_x], dtype=np.float32)
 
     def propagate(self, u):
         # Compute next state with propagation equation
