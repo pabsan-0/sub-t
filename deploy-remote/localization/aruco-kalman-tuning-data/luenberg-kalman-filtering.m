@@ -1,3 +1,4 @@
+close all
 %% data loading and splitting
 a = dlmread('data1.txt');
 x   = a(:,2);
@@ -16,11 +17,11 @@ yaw_valid = yaw(1001:end)
 %% Overview of all data
 
 figure('Position', [10 10 1300 600]);clf; hold on
-subplot(3,5,[1 2]); plot(x);     legend('x','train/test split');   line([1e3 1e3],[-500 500]); ylim([-250 -205])
-subplot(3,5,[6 7]); plot(z);     legend('z','train/test split');   line([1e3 1e3],[-500 500]); ylim([360 420])
-subplot(3,5,[11 12]); plot(yaw); legend('yaw','train/test split'); line([1e3 1e3],[-500 500]); ylim([17 22])   
-subplot(3,5,[3 8 13]); hist(x, 100);    legend('x')
-subplot(3,5,[4 9 14]); hist(z, 100);	legend('z')
+subplot(3,5,[1 2]);     plot(x);        legend('x','train/test split');   line([1e3 1e3],[-500 500]); ylim([-250 -205])
+subplot(3,5,[6 7]);     plot(z);        legend('z','train/test split');   line([1e3 1e3],[-500 500]); ylim([360 420])
+subplot(3,5,[11 12]);   plot(yaw);      legend('yaw','train/test split'); line([1e3 1e3],[-500 500]); ylim([17 22])   
+subplot(3,5,[3 8 13]);  hist(x, 100);   legend('x')
+subplot(3,5,[4 9 14]);  hist(z, 100);	legend('z')
 subplot(3,5,[5 10 15]); hist(yaw, 100); legend('yaw')
 
 
@@ -84,10 +85,10 @@ legend('predicted x_train', 'real x_train')
 
 %% Kalman filter
 LL = eye(6)
-[yhat_kalman_tv, converging_L, converging_P] = pablo_kalman_tv(u, y, A, B, C, LL, Rw*1e-3, Rv);
+[yhat_kalman_tv2, mse] = custom_tvkalman(u, y, A, B, C, [], Rw, Rv, LL, [], [])
 
 figure(); clf; hold on
-plot(yhat_kalman_tv(3,:))
+plot(yhat_kalman_tv2(3,:))
 plot(yaw_train)
 legend('predicted x_train', 'real x_train')
 
@@ -121,51 +122,38 @@ end
 
 
 
-function [yhat_kalman_tv, converging_L, converging_P] ...
-            = pablo_kalman_tv(u, y, A, B, C, LL, Q, R);
-    %%% Gets the output from Kalman's filter for the system 
-    %%% output yhat. Also exports stationary & hopefully convergent values 
-    %%% for L and P. Function inputs are:
-    %%%     u: known input
-    %%%     y: known output
-    %%%     A, B, C: propagation & measurement equation matrices*
-    %%%     LL: coefficient matrix for the process noise w
-    %%%     Q, R: covariance matrices for process and measurement noise
 
+function [yhat, mse] = custom_tvkalman(u, y, A, B, C, D, Q, R, LL, L0, P0)
+    %%% Time variant Kalman filter
+    % Q: Covariance matrix for process noise
+    % R: Covariance matrix for measurement noise
+    % L0: initial filter gain value - initiated within the function
+    % P0: initial covariance estimation error - initiated within the function
+ 
     xhat = zeros(6,max(size(u)));
     yhat = zeros(3,max(size(u)));
 
-    L = zeros(6,3,max(size(u)));  % filter gain
+    L = zeros(6,3,max(size(u)));  % filter gain K
     P = zeros(6,6,max(size(u)));  % covariance estimation error
     
     % we are at instant K (known state) aiming to predict k+1
     for k = 1:max(size(u))-1
         % Propagation loop
         xhat(:,k+1) = A*xhat(:,k) + B*u(:,k);
-        P(:,:,k+1) = A*P(k)*A' + LL*Q*LL';
-                  
-        % Upgrade loop - Theoretically this would happen at the beggining 
-        % of the next loop, therefore all (k+1)'s are actually (k)'s so 
-        % causality holds.
-        L(:,:,k+1) = P(:,:,k+1) * C' * (C*P(:,:,k+1)*C' + R)^(-1);
-        xhat(:,k+1) = xhat(:,k+1) + L(:,:,k+1)*(y(k+1) - C*xhat(:,k+1));
-        P(:,:,k+1) = P(:,:,k+1) - L(:,:,k+1)*C*P(:,:,k+1);
+        P(:,:,k+1)  = A*P(:,:,k)*A' + LL*Q*LL';
+
+        % Predict output needs to be extracted here to keep causality
+        % ONLY IF USED AS A PREDICTOR
+        % yhat(:,k+1) = C*xhat(:,k+1);
+
+        % Upgrade loop - This would happen at the beggining of the next
+        % loop, therefore all (k+1)s are actually (k)s so causality holds.
+        L(:,:,k+1)    = P(:,:,k+1) * C' * (C*P(:,:,k+1)*C' + R)^(-1);
+        xhat(:,k+1) = xhat(:,k+1) + L(:,:,k+1)*(y(:,k+1) - C*xhat(:,k+1));
+        P(:,:,k+1)  = P(:,:,k+1) - L(:,:,k+1)*C*P(:,:,k+1);
         
-        % Predict output. Extract here for std kalman filtering
         yhat(:,k+1) = C*xhat(:,k+1);
-    end
+    end 
     
-    xhat_kalman_tv = xhat;
-    yhat_kalman_tv = yhat;
-    
-    converging_L = L(:,:,900);
-    converging_P = P(:,:,900);
+    mse = [immse(y(1,:), yhat(1,:)); immse(y(2,:), yhat(2,:))];
 end
-
-
-
-
-
-
-
-
