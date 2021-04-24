@@ -2,6 +2,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 from numpy.linalg import inv
 
+'''
+Implements a Kalman filter to be run on recorded data (offline)
+Implemented in python from previous version
+'''
+
 def array(*args, **kwargs):
     kwargs.setdefault("dtype", np.float64)
     return np.array(*args, **kwargs)
