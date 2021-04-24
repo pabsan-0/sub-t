@@ -10,8 +10,7 @@ This directory holds assets and test code for identifying the pose of a camera w
   - Implemented inside opencv cv2.aruco for python3.
   - Higher level commands than for QR.
   - Codes are simpler and thus easier to identify and read.
-  - **STATUS: relative poses between arucos can be found. Global camera position can be found. Orientation is too noisy.**
-  - **TODO: Fix/look for alternatives on orientation sensors. Check how long is the reach. Check different lights.**
+  - **STATUS: Global camera position can be found. Orientation is too noisy. Kalman filters currently under development.**
 
 
 
