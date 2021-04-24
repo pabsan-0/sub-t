@@ -1,4 +1,5 @@
 %%% Implements a kalman filter to run on recorded data (offline)
+%%% Inclides also a Luenberg one-step-ahead predictor
 %%% Developed in MATLAB 2020
 
 close all
