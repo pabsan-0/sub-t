@@ -5,6 +5,7 @@ import math
 # import matplotlib.pyplot as plt
 import os
 import time
+import pprint
 
 '''
 Use this script to receive live feed and find aruco patterns on it.
@@ -51,12 +52,13 @@ def get_position_ID1_ID0():
 
 
 
-def get_camera_pose(markerID=0):
+def get_camera_pose_old(markerID=0):
     ''' Gets the camera pose with respect to a specific marker ID
     '''
     if [markerID] in ids:
         # find the marker id in the id list and get its tvec and rvec
         marker = np.where(ids == [markerID])
+
         tvec = tvecs[marker][0]
         rvec = rvecs[marker][0]
 
@@ -68,14 +70,49 @@ def get_camera_pose(markerID=0):
         T[0:3, 0:3] = rot
         T[0:3, 3]   = tvec
         tvec_camera_from_camera = np.array([0,0,0,1])
-        x, y, z = np.matmul(np.linalg.inv(T), tvec_camera_from_camera)
+        vector = np.matmul(np.linalg.inv(T), tvec_camera_from_camera)
 
         eul   = -cv2.decomposeProjectionMatrix(T[:3,:])[6]
         yaw   =  eul[1,0]
         pitch = (eul[0,0]+(90))*math.cos(eul[1,0])
         roll  = (-(90)-eul[0,0])*math.sin(eul[1,0]) +eul[2,0]
 
-        return x, y, z, rot, yaw, roll, pitch
+        return vector, yaw, roll, pitch
+
+
+def get_camera_pose(markerID=0):
+    ''' Gets the camera pose with respect to any set of detected IDs
+    '''
+    # Define placeholder for detection data
+    detections = {}
+
+    for idx, markerID in enumerate(ids):
+        # get the tvexs and rvecs of this particular marker
+        tvec = tvecs[idx][0]
+        rvec = rvecs[idx][0]
+
+        # Get rotation matrix from object coordinates to camera coordinates
+        rot = cv2.Rodrigues(rvec)[0]
+
+        # Assemble translation matrix and use it to compute camera|markerID
+        T = np.eye(4)
+        T[0:3, 0:3] = rot
+        T[0:3, 3]   = tvec
+        tvec_camera_from_camera = np.array([0,0,0,1])
+        x, y, z, _ = np.matmul(np.linalg.inv(T), tvec_camera_from_camera)
+
+        eul   = -cv2.decomposeProjectionMatrix(T[:3,:])[6]
+        yaw   =  eul[1,0]
+        pitch = (eul[0,0]+(90))*math.cos(eul[1,0])
+        roll  = (-(90)-eul[0,0])*math.sin(eul[1,0]) + eul[2,0]
+
+        # Add each marker's pose to the detection dictionary
+        detections[idx] =  {#'raw': [int(markerID), x, y, z, yaw, roll, pitch],
+                            'id': int(markerID),
+                            'pose': [x, z, yaw]}
+
+    return detections
+
 
 
 
@@ -91,6 +128,7 @@ while(True):
     # reset measurements to avoid issues (empyrical, no formal justification)
     x = float("nan")
     z = float("nan")
+    vector = [float("nan"), float("nan"), float("nan") ]
     yaw = float("nan")
 
     # Work out the aruco markers from the picture
@@ -110,23 +148,13 @@ while(True):
         ## Getting the pose of 1 w.r to 0
         # get_position_ID1_ID0()
 
-        # Get camera pose. Contained because pose algebra may fail
-        try:
-            x, y, z, rot, yaw, roll, pitch = get_camera_pose()
-        except:
-            pass
+        # Get camera pose with respect to all markers
+        detections = get_camera_pose()
 
         # Terminal display
         os.system('cls' if os.name == 'nt' else 'clear')
-        print('\n Corners \n', corners)
-        print('\n ids \n', ids)
-        print('\n Rvecs \n', rvecs)
-        print('\n Tvecs \n', tvecs)
-        print('\n Mtx \n', mtx)
-        print('\n Dist \n', dist)
-        print('\n Camera coordinates: \n', x, y, z)
-        print('\n Camera rotation matrix: \n', rot)
-        print('\nYaw, roll, pitch:\n ', yaw, roll, pitch)
+        print('\n Poses (x, z, yaw)')
+        pprint.pprint(detections, width=1)
 
         # draw aruco markers on pic
         frame = aruco.drawDetectedMarkers(frame, corners, ids)
