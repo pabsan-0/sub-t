@@ -9,7 +9,7 @@ import os
 import time
 import pprint
 
-
+import psutil
 
 
 #########################
@@ -79,9 +79,6 @@ class KalmanFilter(object):
         D: From the measurement equation for State Space models. NOT USED.
         Q: Process noise covariance matrix.
         R: Measurement noise covariance matrix.
-
-    SEE MORE IN OTHER VERSIONS
-
     '''
 
     def __init__(self, A, B, C, D, Q, R):
@@ -150,11 +147,41 @@ class ArucoMarker(object):
     '''
 
     def __init__(self, id, pose, Rv):
+        # Store marker ID, pose
         self.id = id
         self.pose = pose
+
+        # Store Kalman gain and Measurement Noise Covariance
         self.L = np.zeros([6, 3], dtype=np.float32)
         self.R = Rv
 
+        # Compute and store the rotation matrix of this marker
+        x = pose[0]
+        z = pose[1]
+        yaw = np.deg2rad(pose[2])
+        self.rot = np.array([[np.cos(yaw), -np.sin(yaw),   x],\
+                             [np.sin(yaw),  np.cos(yaw),   z],\
+                             [          0,            0,   1]])
+
+    def transform2D(self, pose_camera2marker):
+        '''
+        Applies homogeneous 2D transform to project pose of camera with
+        respect to a marker and obtain the pose of the camera with respect to
+        the origin coordinate frame.
+        '''
+
+        # Convert input [x, z, yaw] to [x, z, 1] for 2D conversion
+        B = pose_camera2marker * np.array([1,1,0]) + np.array([0,0,1])
+
+        # Apply homogeneous transformation matrix to get [x, z] w.r to origin
+        A = self.rot @ B
+
+        # Add angle camera_/marker + marker_/origin
+        yaw = pose_camera2marker[2] + self.pose[2]
+
+        # Recover yaw angle and return array in form [x, z, yaw]
+        # returning   X & Z Term     +       angle
+        return A * np.array([1,1,0]) + yaw * np.array([0,0,1])
 
 
 def get_camera_pose(markerID=0):
@@ -202,10 +229,15 @@ def get_camera_pose(markerID=0):
 
 # Create a library defining all the ARUCOs that exist in the environment
 markers = {
-    0: ArucoMarker(0, [0,    0,  0], Rv),
-    1: ArucoMarker(1, [0, -220,  0], Rv),
+    0: ArucoMarker(0, [    0,    0,   0], Rv),
+    1: ArucoMarker(1, [ -640,    0,   0], Rv),
+    2: ArucoMarker(2, [-1100,  370,  -90], Rv),
     }
 env_markers = [markers[i].id for i in markers.keys()]
+
+# define size of marker for scale, free units [currently in mm]
+# using a common size saves some code work
+size_of_marker = 150
 
 # Instantiate a kalman filter and placeholder for its output
 KF = KalmanFilter(A, B, C, [], Rw, Rv)
@@ -216,7 +248,7 @@ with np.load('RedmiNote9Pro.npz') as X:
     mtx, dist = [X[i] for i in('cameraMatrix', 'distCoeffs')]
 
 # Initialize the video recorder from IP camera
-cap = cv2.VideoCapture('https://192.168.43.1:8085/video')
+cap = cv2.VideoCapture('https://192.168.0.101:8085/video')
 
 
 
@@ -238,18 +270,15 @@ while(True):
             print('UNEXPECTED ARUCO MARKER SPOTTED, SKIPPING TO NEXT LOOP...')
             continue
 
-        # define size of marker for scale [currently in mm]
-        size_of_marker = 150
-
         # get the rotation and traslation vectors CAMERA -> ARUCO
         rvecs,tvecs,trash = aruco.estimatePoseSingleMarkers(corners, size_of_marker , mtx, dist)
 
         # Get camera pose. Contained because pose algebra may fail
         detections = get_camera_pose()
 
-        # Terminal display
+        # Terminal display 1
         os.system('cls' if os.name == 'nt' else 'clear')
-        print('\n Raw poses (x, z, yaw)')
+        print('\n Raw poses (x, z, yaw) w.r. to each marker')
         pprint.pprint(detections, width=1)
 
         # Draw aruco markers and 3D axes on picture
@@ -257,14 +286,21 @@ while(True):
         for i, j in zip(rvecs, tvecs):
             frame = aruco.drawAxis(frame, mtx, dist, i, j, 50)
 
-
-
         # markers that are being detected ATM
         markers_on_sight = [detections[i]['id'] for i in detections.keys()]
 
         # correct detection based on coordinates
         for idx, marker in enumerate(markers_on_sight):
-            detections[idx]['pose'] -= markers[marker].pose
+            detections[idx]['pose'] = markers[marker].transform2D(detections[idx]['pose'])
+
+        # Terminal display 2
+        print('\n Transformed poses (x, z, yaw) w.r. to (0,0,0)')
+        pprint.pprint(detections, width=1)
+
+
+
+
+        # KALMAN FILTER ONLINE MODIFICATIONS
 
         # Assemble new kalman filter matrices: Kalman Gain and C matrix
         KF.L = np.hstack([markers[i].L for i in markers_on_sight])
@@ -288,31 +324,28 @@ while(True):
         for idx, id in enumerate(markers_on_sight):
             markers[id].L = KF.L[:, 0+idx*3 :3+3*idx]
 
-        print('\n Kalman filtered pose \n', xhat)
-
+        # Terminal display 3
+        with np.printoptions(precision=0, suppress=True):
+            print('\n Kalman filtered pose \n', xhat)
+            print(f'\n memory usage {psutil.virtual_memory().percent} %' )
 
     # Display the resulting frame, pyrDown so it fits the screen
-    cv2.imshow('frame', cv2.pyrDown(frame))
+    cv2.imshow('frame', (frame))
 
     # stop looping on Q press
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
 # Hold the capture until a second keypress is made, then close
-cap.release()
-cv2.waitKey()
-cv2.destroyAllWindows()
+# cap.release()
+# cv2.waitKey()
+# cv2.destroyAllWindows()
 
-
-
-
-yhats = xhats
 
 # Plotting results
-yhat = np.array(yhats)
 f2, axes = plt.subplots(3, 1, figsize=(15, 6), sharex=True)
 ax1, ax2, ax3 = axes.flatten()
-ax1.plot(yhat[:,0], label='filtered x');   ax1.legend(loc='upper right')
-ax2.plot(yhat[:,2], label='filtered z');   ax2.legend(loc='upper right')
-ax3.plot(yhat[:,4], label='filtered yaw'); ax3.legend(loc='upper right')
+ax1.plot(xhats[:,0], label='filtered x');   ax1.legend(loc='upper right')
+ax2.plot(xhats[:,2], label='filtered z');   ax2.legend(loc='upper right')
+ax3.plot(xhats[:,4], label='filtered yaw'); ax3.legend(loc='upper right')
 plt.show()
