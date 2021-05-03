@@ -16,6 +16,7 @@ This directory holds assets and test code for identifying the pose of a camera w
     - Kalman filter for sensor fusion implemented - only camera
 
 ## Pending improvements:
+- Better camera calibration
 - Including inertial sensors from phone: Up to now, the sample time was too low because the sensors followed an http request. With a tcp socket the sample time is enough to include the inertial sensors. Following code as example
 
     ```
