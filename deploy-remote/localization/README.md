@@ -10,7 +10,10 @@ This directory holds assets and test code for identifying the pose of a camera w
   - Implemented inside opencv cv2.aruco for python3.
   - Higher level commands than for QR.
   - Codes are simpler and thus easier to identify and read.
-  - **STATUS: Global camera position can be found. Orientation is too noisy. Kalman filters currently under development.**
+  - Milestones: 
+    - Global camera position can be found. Orientation is too noisy. 
+    - Kalman filter for noise reduction implemented.
+    - Kalman filter for sensor fusion implemented - only camera
 
 ## Pending improvements:
 - Including inertial sensors from phone: Up to now, the sample time was too low because the sensors followed an http request. With a tcp socket the sample time is enough to include the inertial sensors. Following code as example
