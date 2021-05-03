@@ -12,7 +12,26 @@ This directory holds assets and test code for identifying the pose of a camera w
   - Codes are simpler and thus easier to identify and read.
   - **STATUS: Global camera position can be found. Orientation is too noisy. Kalman filters currently under development.**
 
+## Pending improvements:
+- Including inertial sensors from phone: Up to now, the sample time was too low because the sensors followed an http request. With a tcp socket the sample time is enough to include the inertial sensors. Following code as example
 
+    ```
+    import time
+    import socket
+
+    host="192.168.0.110"
+    port=5555
+
+    s=socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    s.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+    s.bind((host, port))
+
+    while 1:
+        tic = time.time()
+        message, address = s.recvfrom(5555)
+        print(message, 'TIME: ', time.time() - tic)
+    ```
 
 ### External links
 - [Python Open CV docs for camera calibration](https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_calib3d/py_calibration/py_calibration.html)
