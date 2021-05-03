@@ -4,6 +4,7 @@ Here you can find assets for implementing YOLO darknet networks that can infer o
 - receiving video and inferring on a host machine
 - uploading the result to yet another local server
 
+# Remote inference with Raspberry Pi video feed
 ## Requires
 - Raspberry Pi 3 model B (or similar)
 - Camera
