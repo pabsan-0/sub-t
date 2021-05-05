@@ -101,6 +101,7 @@ def get_camera_pose(markerID=0):
         tvec_camera_from_camera = np.array([0,0,0,1])
         x, y, z, _ = np.matmul(np.linalg.inv(T), tvec_camera_from_camera)
 
+        # the euler angle is the Projection matrix Aruco/camera, not camera/aruco !!!!!!!
         eul   = -cv2.decomposeProjectionMatrix(T[:3,:])[6]
         yaw   =  eul[1,0]
         pitch = (eul[0,0]+(90))*math.cos(eul[1,0])
