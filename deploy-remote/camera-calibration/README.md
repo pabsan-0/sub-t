@@ -11,10 +11,17 @@ This tool grabs image data from a specified web server so that resolution and as
 - [charuco-takepics.py][]: Load the interface for live feed from IP url and capture images on keypress.
 - [charuco-test.py][]: Test the calibration parameters by attempting to scan some ArUcos.
 
-
 [calib-pics-charuco]: https://github.com/solder-fumes-asthma/sub-t/tree/master/deploy-remote/camera-calibration/calib-pics-charuco
 [RedmiNote9Pro.npz]: https://github.com/solder-fumes-asthma/sub-t/blob/master/deploy-remote/camera-calibration/RedmiNote9Pro.npz
 [charuco-calibration-pattern.png]: https://github.com/solder-fumes-asthma/sub-t/blob/master/deploy-remote/camera-calibration/charuco-calibration-pattern.png
 [charuco-callibrate.py]: https://github.com/solder-fumes-asthma/sub-t/blob/master/deploy-remote/camera-calibration/charuco-callibrate.py
 [charuco-takepics.py]: https://github.com/solder-fumes-asthma/sub-t/blob/master/deploy-remote/camera-calibration/charuco-takepics.py
 [charuco-test.py]: https://github.com/solder-fumes-asthma/sub-t/blob/master/deploy-remote/camera-calibration/charuco-test.py
+
+
+## To calibrate your camera:
+- Boot your live stream to a local IP
+  - Hardcode that IP into the scripts in this dir
+- Run `charuco-takepics.py` and take several pictures
+- Specify these files' path inside `charuco-callibrate.py`
+- Run `charuco-callibrate.py` and retrieve your .npz file, which contains the camera matrix and distortion parameters.
