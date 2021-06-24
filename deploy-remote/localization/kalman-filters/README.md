@@ -11,7 +11,7 @@ This folder holds a series of testing scripts for implementing Kalman filters on
 - [RedmiNote9Pro.npz][]: Calibration parameters of my camera. Use yours.
 - [data1.txt][]: Some data extracted from a static ArUco observation to infer the sensor noise covariance matrix.
 
-The final implementation of the Kalman filter adds an extra fix to the B2 model (to account for angle weighted average issues within the filter) and can be found in [../perception-layer-final][].
+The final implementation of the Kalman filter adds an extra fix to the B2 model (to account for angle weighted average issues within the filter) and can be found in [../../perception-layer-final][].
 
 [A1-kalman-offline.m]: https://github.com/solder-fumes-asthma/sub-t/blob/master/deploy-remote/localization/kalman-filters/A1-kalman-offline.m
 [A2-kalman-offline.py]: https://github.com/solder-fumes-asthma/sub-t/blob/master/deploy-remote/localization/kalman-filters/A2-kalman-offline.py
@@ -20,7 +20,7 @@ The final implementation of the Kalman filter adds an extra fix to the B2 model 
 [B2-kalman-live-multi.py]: https://github.com/solder-fumes-asthma/sub-t/blob/master/deploy-remote/localization/kalman-filters/B2-kalman-live-multi.py
 [RedmiNote9Pro.npz]: https://github.com/solder-fumes-asthma/sub-t/blob/master/deploy-remote/localization/kalman-filters/RedmiNote9Pro.npz
 [data1.txt]: https://github.com/solder-fumes-asthma/sub-t/blob/master/deploy-remote/localization/kalman-filters/data1.txt
-[../perception-layer-final]: https://github.com/solder-fumes-asthma/sub-t/tree/master/deploy-remote/perception-layer-final
+[../../perception-layer-final]: https://github.com/solder-fumes-asthma/sub-t/tree/master/deploy-remote/perception-layer-final
 
 ## Model briefing
 #### MODEL A:
