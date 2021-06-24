@@ -28,6 +28,10 @@ This repository hosts the files of the project *Convolutional neural networks fo
 
 ### Object detection benchmarking
 
-### Item search demo videos
+### Item search demos
+#### Room layout
+![image](https://user-images.githubusercontent.com/63670587/123277294-450e0980-d506-11eb-9faa-0aa23f441682.png)
+
+#### Live item search
 https://user-images.githubusercontent.com/63670587/123239343-8e972e00-d4df-11eb-8c71-16db5db55ad4.mp4
 
