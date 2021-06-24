@@ -26,19 +26,20 @@ For this, make sure all libraries and requisites are set up, hardcode the image 
 [pabloWorldMap.py]: https://github.com/solder-fumes-asthma/sub-t/blob/master/deploy-remote/perception-layer-final/pabloWorldMap.py
 
 
-## To actually use the perception layer
+## To use the perception layer
 
 - Make sure the following is properly installed
   - Darknet (with GPU support)
   - The python modules listed at `requirements.txt`
 - Calibrate your camera with the tools at [../camera-calibration](https://github.com/solder-fumes-asthma/sub-t/tree/master/deploy-remote/camera-calibration)
-- Clone the [percepion-layer-final](https://github.com/solder-fumes-asthma/sub-t/tree/master/deploy-remote/perception-layer-final) directory (this directory).
+- Clone the [percepion-layer-final](https://github.com/solder-fumes-asthma/sub-t/tree/master/deploy-remote/perception-layer-final) directory (this directory)
   - Drop your camera's calibration file in the cloned dir
   - Check the mains of the file `main-multiprocessing.py` and hardcode-adjust:
     - Feed IP source
     - Camera calibration file
     - Darknet installation path
-  - Run `main-multiprocessing.py` to start live-finding objects
+- Boot your camera live stream to a local IP
+- Run `main-multiprocessing.py` to start live-finding objects
 
 
 ## Media
