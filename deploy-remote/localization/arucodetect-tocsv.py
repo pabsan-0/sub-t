@@ -11,7 +11,7 @@ from sys import argv
 '''
 Use this script to receive live feed and find aruco patterns on it, then export
 the camera pose ON THE HORIZONTAL PLACE to a csv file, name of which specificied 
-as arg. Requires a callibrated camera matrix and distance vector.
+as arg. Requires a callibrated camera matrix and distortion vector.
 
 ARGS: FILENAME: text file in which to dump camera horizontal pose w/r to marker0
 
