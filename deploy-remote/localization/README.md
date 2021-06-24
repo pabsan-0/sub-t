@@ -1,19 +1,31 @@
-# Machine pose localization from camera input
-This directory holds assets and test code for identifying the pose of a camera with respect to waypoints. 
+# Localization from camera input
+This directory holds assets and test code for identifying the pose of a camera with respect to a series of landmarks. 
+The following were the most experimented with:
 
-- QR code:
+- QR codes:
   - Using pyzbar for localization and low-level opencv for image manipulation   
-  - **DISCONTINUED in favor of ARUCO CODES**  
+  - **DISCONTINUED in favor of ARUCO MARKERS**  
     - Hard to segmentate the code from the rest of the image  
     - Hard to read the code once segmentated  
-- Aruco: 
+- ArUco markers: 
   - Implemented inside opencv cv2.aruco for python3.
   - Higher level commands than for QR.
   - Codes are simpler and thus easier to identify and read.
-  - Milestones: 
-    - Global camera position can be found. Orientation is too noisy. 
-    - Kalman filter for noise reduction implemented.
-    - Kalman filter for sensor fusion implemented - only camera
+
+## In this directory:
+- [aruco-test][]: Holds code for testing ArUco pose estimation and its conversion to camera pose.
+- [kalman-filter][]: Holds source code for Kalman filters to improve noisy localization.
+- [arucodetect-keeper.py][]: Receive live feed and find aruco patterns on it, get camera/relative poses... etc.
+- [arucodetect-tocsv.py][]: Receive live feed and store read camera pose over time in a csv file.
+
+The most up-to-date versions of these were directly added to the final implementation at [../perception-layer-final][].
+
+[aruco-test]: https://github.com/solder-fumes-asthma/sub-t/tree/master/deploy-remote/localization/aruco-test
+[kalman-filter]: https://github.com/solder-fumes-asthma/sub-t/tree/master/deploy-remote/localization/kalman-filters
+[arucodetect-keeper.py]: https://github.com/solder-fumes-asthma/sub-t/blob/master/deploy-remote/localization/arucodetect-keeper.py
+[arucodetect-tocsv.py]: https://github.com/solder-fumes-asthma/sub-t/blob/master/deploy-remote/localization/arucodetect-tocsv.py
+[../perception-layer-final]: https://github.com/solder-fumes-asthma/sub-t/tree/master/deploy-remote/perception-layer-final
+
 
 ## Pending improvements:
 - Better camera calibration
