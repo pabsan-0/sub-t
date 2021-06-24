@@ -24,4 +24,4 @@ This tool grabs image data from a specified web server so that resolution and as
   - Hardcode that IP into the scripts in this dir
 - Run `charuco-takepics.py` and take several pictures
 - Specify these files' path inside `charuco-callibrate.py`
-- Run `charuco-callibrate.py` and retrieve your .npz file, which contains the camera matrix and distortion parameters.
+- Run `charuco-callibrate.py` and retrieve your .npz file, which contains the camera matrix and distortion parameters
