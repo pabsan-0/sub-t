@@ -11,7 +11,7 @@ This repository hosts the files of the project *Convolutional neural networks fo
 - **Training and benchmarking**: Train different neural network models on the gathered data and evaluate and compare their performance on the object detection task.  
 - **Deployment**: Build a perception layer suitable for item search around an object detection approach.
 
-![image](https://user-images.githubusercontent.com/63670587/114325028-24046200-9b2e-11eb-8657-142ba066c1fe.png)
+![image](https://user-images.githubusercontent.com/63670587/123279374-13963d80-d508-11eb-84a6-1cfa3f67ae62.png)
 
 ## In this directory:
 - [][]
