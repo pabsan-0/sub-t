@@ -1,5 +1,8 @@
 # Data collection:
-![image](https://user-images.githubusercontent.com/63670587/123279853-8bfcfe80-d508-11eb-8eda-7818f8026efb.png)
+Assets and resources used for the generation of different data towards object detection benchmarking.
+
+## Data generation roadmap:
+<img src="https://user-images.githubusercontent.com/63670587/123279853-8bfcfe80-d508-11eb-8eda-7818f8026efb.png" height="600">
 
 
 # Datasets:  
