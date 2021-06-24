@@ -45,8 +45,10 @@ For this, make sure all libraries and requisites are set up, hardcode the image 
 ## Media
 
 ### Sequential perception layer overview
+![image](https://user-images.githubusercontent.com/63670587/123284055-3b87a000-d50c-11eb-8947-d2f3621d38d6.png)
 
 ### Multiprocessing perception layer overview
+![image](https://user-images.githubusercontent.com/63670587/123284012-33c7fb80-d50c-11eb-803e-01816fe9e501.png)
 
 
 
