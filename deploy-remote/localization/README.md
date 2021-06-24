@@ -4,7 +4,7 @@ The following were the most experimented with:
 
 - QR codes:
   - Using pyzbar for localization and low-level opencv for image manipulation   
-  - **DISCONTINUED in favor of ARUCO MARKERS**  
+  - *Discontinued in favor of ArUco markers*
     - Hard to segmentate the code from the rest of the image  
     - Hard to read the code once segmentated  
 - ArUco markers: 
