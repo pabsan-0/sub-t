@@ -9,7 +9,7 @@ import pprint
 
 '''
 Use this script to receive live feed and find aruco patterns on it.
-Requires a callibrated camera matrix and distance vector.
+Requires a callibrated camera matrix and distortion vector.
 
 DEPS: RedmiNote9Pro.nz: a file from which to load camera distortion matrix
 '''
