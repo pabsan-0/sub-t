@@ -1,5 +1,5 @@
 # Data collection:
-![image](https://user-images.githubusercontent.com/63670587/114383113-7628a000-9b8d-11eb-9e85-6cdf5384a417.png)
+![image](https://user-images.githubusercontent.com/63670587/123279853-8bfcfe80-d508-11eb-8eda-7818f8026efb.png)
 
 
 # Datasets:  
@@ -26,3 +26,8 @@ Child of the PPU-6 dataset, in which synthetic training pictures have been remov
 | **Train**        | 223      | 237    | 198   | 208          |  212     | 209  |  
 | **Test**         | 152      | 158    | 142   | 155          | 146      | 137  |  
 | **Valid**        | 81       | 80     | 80    | 77           | 76       | 80   |  
+
+
+
+## [Unity-6-1000 dataset](https://drive.google.com/file/d/1jViuZrzWHTOIWU8SYt8pWVQY3mgi9aYC/view?usp=sharing): 
+1000 sythetic images generated with Synthdet for the artifacts Backpack, Helmet, Drill, Extinguisher, Survivor and Rope.
