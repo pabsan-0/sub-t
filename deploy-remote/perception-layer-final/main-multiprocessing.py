@@ -46,6 +46,13 @@ from pabloWorldMap import worldMap
 
 from multiprocessing import Process, Queue
 
+"""
+This program runs live darknet inference from images taken from a capture device
+(an IP camera or a webcam) and, from the detections of specified items, builds
+a likelihood map of a 2D environment in which the areas where items are found
+are highlighted in white. Requires a standalone installation of darknet with
+GPU support.
+"""
 
 def trackingMessage(id, parentName, outputMetricName, outputMetric, now):
     """
