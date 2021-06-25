@@ -17,13 +17,16 @@ This repository hosts the files of the project *Convolutional neural networks fo
 
 ## Main outcomes and resources
 - **Model benchmarking**: 
-  - Benchmarking results: see [project report][] or showcase below
+  - Benchmarking results: 
+    - See [project report][] or showcase below
+    - Full COCO tables available at [result-files][]
   - Generated data: 
     - Real samples: [PPU-6 dataset][]
     - Synthetic samples: [Unity-6-1000 dataset][]
   - Trained models: [available here][]
  
 [project report]: None
+[result-files]: https://github.com/pabsan-0/sub-t/tree/master/training-and-benchmarking/0-result-files-dump
 [PPU-6 dataset]: https://drive.google.com/file/d/1D-oBYlsD2c4dWnMyhtav1_mYnqfNK-ep/view?usp=sharing
 [Unity-6-1000 dataset]: https://drive.google.com/file/d/1jViuZrzWHTOIWU8SYt8pWVQY3mgi9aYC/view?usp=sharing
 [available here]: https://drive.google.com/drive/folders/1OLD1uxc3tgps7nPPNuuovNihPEKamQzQ?usp=sharing
