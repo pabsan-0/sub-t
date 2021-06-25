@@ -237,6 +237,10 @@ class worldMap(object):
                      + self.discoveryMask * self.appearanceRate,
             0, 255)
 
+        # this just to show fov over detections
+        self.map_fov = self.map.copy()
+        cv2.drawContours(self.map_fov, [fovTriangle], 0, 255, 2)
+        cv2.circle(self.map_fov, tuple(fovTriangle[2]), 20, 255, 9)
 
         '''cv2.imshow('Field of view', self.fovMask)
         cv2.imshow('Instantaneous discovery', np.array(self.discoveryMask, np.uint8))

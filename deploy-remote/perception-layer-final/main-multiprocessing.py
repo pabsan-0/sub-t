@@ -33,12 +33,15 @@ import sys
 
 import pabloCameraPoseAruco
 import pabloKalman_yawEuclidean as pabloKalman
+# import pabloKalman as pabloKalman
+
 import pabloDarknetInference
 import pabloItem2CameraPosition
 import pabloWorldMap
 
 from pabloCameraPoseAruco import ArucoMarker
 from pabloKalman_yawEuclidean import KalmanFilter
+# from pabloKalman import KalmanFilter
 from pabloWorldMap import worldMap
 
 from multiprocessing import Process, Queue
@@ -281,10 +284,13 @@ def parallelWorldMap(itemListAndSize, qCameraPoseFiltered, qItem2CameraPosition,
                 cameraPoseFilteredCompliant
                 )
 
+
+
             # Show if localization is okay else freeze
             cv2.imshow('Field of view', map.fovMask)
             cv2.imshow('Instantaneous discovery', np.array(map.discoveryMask, np.uint8))
-            cv2.imshow('Likelihood map', map.map)
+            #cv2.imshow('Likelihood map', map.map)
+            cv2.imshow('Likelihood map', map.map_fov)
 
         # Always show
         cv2.imshow('ArUco pose estimator', frameArUco)
@@ -302,7 +308,7 @@ if __name__ == '__main__':
     timeAllModules, showAllModulesOutput = False, True
 
     # Video feed source
-    cap = cv2.VideoCapture('https://192.168.0.103:8085/video')
+    cap = cv2.VideoCapture('https://192.168.0.102:8085/video')
 
     # Load camera calibration matrices
     with np.load('RedmiNote9Pro.npz') as X:
@@ -310,7 +316,7 @@ if __name__ == '__main__':
     fakeDist = np.array([[1e-5,1e-5,1e-5,1e-5,1e-5]])
 
     # Kalman Rv, preimported here to assign Rv to markerDict, again on Kalman module
-    # _,_,_,_,_, Rv = pabloKalman.modelImport(dataSample='data1.txt')
+    #_,_,_,_,_, Rv = pabloKalman.modelImport(dataSample='data1.txt')
     # Use this to solve non-euclidean angle issue
     Rv = np.eye(4)
 
