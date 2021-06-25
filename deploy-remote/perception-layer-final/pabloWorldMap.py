@@ -56,6 +56,8 @@ def relu(x):
 
 
 def imagePatch(img, img_overlay, x, y):
+    ''' Overlap a smaller image on top of a bigger one
+    '''
     # compensate for patch radious so that x,y tell the center
     h, w, _ = img_overlay.shape
     y -= h//2
@@ -81,6 +83,9 @@ def imagePatch(img, img_overlay, x, y):
 
 
 class worldMap(object):
+    ''' Implements a world map class in which item detections are to be drawn
+    '''
+    
     def __init__(self, mapsize_XZ_cm=[320,320], numItems=1):
         # unpack map size (default is for bedroom)
         self.sizeZcm = mapsize_XZ_cm[0]
@@ -169,6 +174,10 @@ class worldMap(object):
 
 
     def getFoV_2map(self, cameraPose):
+        ''' Convert the coordinates of the ABC points that represent the FoV
+        to map absolute coordinates.
+        '''
+        
         # unpack coordinates for readability, mm-deg -> cm-rad
         # Because WorldFrame and MapFrame are square to each other we add coords
         x_cam2map   = 0.1 * cameraPose[0]  + self.world2map_XZ_cm[0]
@@ -187,6 +196,10 @@ class worldMap(object):
 
 
     def getPoints_2map(self, item2CameraPosition, cameraPose):
+        ''' Convert the coordinates of arbitrary points from camera
+        to map absolute coordinates.
+        '''
+        
         # Might be many points - parallelizable matrix implementation
         # unpack coordinates for readability, mm-deg -> cm-rad
         x_cam2world  = 0.1 * cameraPose[0]
@@ -216,7 +229,9 @@ class worldMap(object):
 
 
     def update(self, item2CameraPosition, cameraPose):
-
+        ''' Update existing likelihood map with any detection / missdetection
+        '''
+        
         # Get FoV mask (region of visible points)
         self.fovMask = np.zeros((self.sizeXcm, self.sizeZcm, 1), np.float32)
         fovTriangle = self.getFoV_2map(cameraPose)
@@ -237,12 +252,14 @@ class worldMap(object):
                      + self.discoveryMask * self.appearanceRate,
             0, 255)
 
-        # this just to show fov over detections
+        # this to show fov over detections
         self.map_fov = self.map.copy()
         cv2.drawContours(self.map_fov, [fovTriangle], 0, 255, 2)
         cv2.circle(self.map_fov, tuple(fovTriangle[2]), 20, 255, 9)
-
-        '''cv2.imshow('Field of view', self.fovMask)
+        
+        '''
+        # moved to main-multiprocessing.py
+        cv2.imshow('Field of view', self.fovMask)
         cv2.imshow('Instantaneous discovery', np.array(self.discoveryMask, np.uint8))
         cv2.imshow('Likelihood map', self.map)
         cv2.waitKey(1)
