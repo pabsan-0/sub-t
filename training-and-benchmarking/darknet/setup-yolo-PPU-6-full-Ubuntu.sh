@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# This bash script will setup a folder structure to work with YOLOv4 networks.
+# This bash script will setup a folder structure to work with YOLOv4 networks
+# plus download a current version of AlexeyAB darknet.
 # You will NEED TO HARDCODE YOUR HOME USER, since DARKNET WONT EAT ~/* dirs
 # Run this script through dos2unix or copy raw text for compatibility
 # Find commands for training at the bottom of this script
