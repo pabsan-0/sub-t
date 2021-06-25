@@ -162,7 +162,8 @@ def main(KF, camera2aruco_pose, markers):
     #
     # compute the angle mean and subtract it from each measurement
     for i, j in enumerate(markers_on_sight):
-        camera2aruco_pose[i]['pose2world'][2] = np.rad2deg(angle_list[i] - angle_avg)'''
+        camera2aruco_pose[i]['pose2world'][2] = np.rad2deg(angle_list[i] - angle_avg)
+    '''
 
     # convert angle to cos-sin and pack it up into camera2aruco_pose dict structure
     for i, j in enumerate(markers_on_sight):
@@ -180,7 +181,8 @@ def main(KF, camera2aruco_pose, markers):
 
     ''' DOESNT WORK - KEPT FOR REFERENCE
     # undo the linear transformation of the angle and convert to +180/-180 space
-    xhat[4] = np.mod(xhat[4] + np.rad2deg(angle_avg) - 180, 360) - 180'''
+    xhat[4] = np.mod(xhat[4] + np.rad2deg(angle_avg) - 180, 360) - 180
+    '''
 
     # Retrieve the updated kalman gain of each marker to storage
     for idx, id in enumerate(markers_on_sight):
