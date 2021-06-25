@@ -31,7 +31,6 @@ Detection shape:
    144.4390869140625))]
 '''
 
-
 def mindYourDarknet(func):
     ''' Decorator handling the proper importing of darknet.
     '''
@@ -98,7 +97,6 @@ def imageDetection(image, network, class_names, class_colors, thresh=0.1):
     darknet.free_image(darknet_image)
     image = darknet.draw_boxes(detections, image_resized, class_colors)
     return cv2.cvtColor(image, cv2.COLOR_BGR2RGB), detections
-
 
 
 
