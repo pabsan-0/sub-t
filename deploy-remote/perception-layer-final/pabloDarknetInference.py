@@ -102,13 +102,6 @@ def imageDetection(image, network, class_names, class_colors, thresh=0.1):
 
 
 
-
-
-
-
-
-
-
 ''' DEPRECATED BUT STORED TOWARDS CLEANER IMPORT
 def prepareImportDarknet():
     # VERY NASTY way of importing the darknet bindings without installing extra packages
