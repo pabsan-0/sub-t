@@ -3,6 +3,16 @@ import cv2
 import numpy as np
 from sys import argv
 
+'''
+This script concatenates all images in a directory (provided as argument) 
+so that the output is a high-resolution collage of them. 
+
+For concatenating all pics in the ./ dir in a 4 row and 4 col, call as: 
+python3 image-collages.py ./ 4 4
+
+Output is stored in the cwd.
+'''
+
 input_dir = argv[1]
 collage_size = [0,0]
 collage_size[0] = int(argv[2])
