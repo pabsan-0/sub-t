@@ -1,2 +1,1 @@
-*.ipynb linguist-language=Python
-sub-t/training-and-benchmarking/efficientdet/*.ipynb linguist-language=Java
+sub-t/training-and-benchmarking/efficientdet/*.ipynb linguist-vendored
