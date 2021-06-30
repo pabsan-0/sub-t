@@ -1,4 +1,4 @@
 sub-t/training-and-benchmarking/efficientdet/* linguist-vendored
-training-and-benchmarking/efficientdet/EfficientDet-Train-D0.ipynb -linguist-vendored
-training-and-benchmarking/efficientdet/EfficientDet-Train-D1.ipynb -linguist-vendored
+sub-t/training-and-benchmarking/efficientdet/EfficientDet-Train-D0.ipynb -linguist-vendored
+sub-t/training-and-benchmarking/efficientdet/EfficientDet-Train-D1.ipynb -linguist-vendored
 
