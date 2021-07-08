@@ -279,3 +279,32 @@ class worldMap(object):
         #self.map = self.map - self.mask_removal
         # bound values
         #self.map = np.clip(self.map, 0, 2)
+        
+        
+        
+        """
+        # make map a multilayer array with the number of different items to detect
+        # map = np.zeros(x,z, numitems)
+       
+        # have a dict like this where the number is the layer in the map array:
+        categories_dict = {'bottle': 0,
+                           'can':    1,}
+        
+        # modify getPoints_2map with additional argument
+        # so that if we detect bottle, can, can, bottle ->  detectedCategories = [0,1,1,0]
+        
+        def getPoints_2map(*args, *kwargs):      
+            ...
+            detectedCategories = [categories_dict(i[0]) for i in item2CameraPosition]
+            ...
+            return p2map.astype(int), detectedCategories
+        
+        # then, in update, do:
+        self.discoveryMask = np.zeros((self.sizeXcm, self.sizeZcm, numitems), np.uint16)
+        if item2CameraPosition != []:
+            item2MapPosition, detectedCategories = self.getPoints_2map(item2CameraPosition, cameraPose)
+            for (x, y), cat in zip(item2MapPosition, detectedCategories):
+                self.discoveryMask = imagePatch(self.discoveryMask[:,:, cat], self.gaussianKernel2D, x, y)
+        
+        # debug and profit
+        """
