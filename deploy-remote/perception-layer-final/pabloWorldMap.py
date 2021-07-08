@@ -58,7 +58,7 @@ def imagePatch(img, img_overlay, x, y):
     ''' Overlap a smaller image on top of a bigger one
     '''
     # compensate for patch radious so that x,y tell the center
-    h, w, _ = img_overlay.shape
+    h, w = img_overlay.shape
     y -= h//2
     x -= w//2
 
@@ -140,14 +140,33 @@ def overlay_image_alpha(img, img_overlay, x, y, alpha_mask):
 class worldMap(object):
     ''' Implements a world map class in which item detections are to be drawn
     '''
-    def __init__(self, mapsize_XZ_cm=[320,320], numItems=1):
+    def __init__(self, mapsize_XZ_cm=[320,320], items = []):
         # unpack map size (default is for bedroom)
         self.sizeZcm = mapsize_XZ_cm[0]
         self.sizeXcm = mapsize_XZ_cm[1]
 
-        # Map template
-        self.map = np.zeros((self.sizeXcm, self.sizeZcm, numItems), np.float32)
+        # infer how many items are we detecting and which are them
+        if items != []:
+            # count items
+            self.numItems = len(items)
 
+            # build a dictionary name-> index
+            self.itemDict = {}
+            for idx, name in enumerate(items):
+                self.itemDict[name] = idx
+
+            # build the opposite transformation as list index -> name
+            self.itemNames = list(self.itemDict.keys())
+        else:
+            # Default configuration
+            self.numItems = 1
+            self.itemDict = {'': 0}
+            self.itemNames = None
+
+
+        # Map template
+        self.map = np.zeros((self.sizeXcm, self.sizeZcm, self.numItems), np.float32)
+        #
         # Coordinates of the World Frame with respect to the Map Frame
         self.world2map_XZ_cm = [110, 0]
 
@@ -174,7 +193,7 @@ class worldMap(object):
 
 
         ### Init for detections
-
+        #
         # GAUSSIAN KERNEL
         # Produce 2D gaussian kernel with top value close to white and shape (X,X,1)
         # Imshowing this kernel will not be representative, loot at detectionMask!
@@ -183,20 +202,20 @@ class worldMap(object):
         kernel = kernel @ kernel.T
         kernel *= 250/np.max(kernel)
         self.gaussianKernel2D = np.array([kernel], np.uint8).reshape(ksize,ksize,1)
-
+        #
         # Speed at which items appear / disappear
         self.disappearanceRate = 0.003
         self.appearanceRate = 0.005
 
 
-        # Init fancy map_fov - load from outside
-        #
+        ### Init fancy map_fov - load these variables from outside
         # image holding the map information
         self.map_background = []
         #
         # pixel coordinates of the origin of that map
         self.backgroundX = []
         self.backgroundY = []
+
 
     def getFoV_demo2world(self, cameraPose):
         # unpack coordinates for readability, mm-deg -> cm-rad
@@ -285,7 +304,11 @@ class worldMap(object):
         # ...cv2 reads 3 different 2D points the way we want to. (ad-hoc)
         p2map = p2map[[1,0],:].T
 
-        return p2map.astype(int)
+        # encode the category of each detection
+        detectedCategories = [self.itemDict[i[0]] for i in item2CameraPosition]
+
+        return p2map.astype(int), detectedCategories
+
 
 
     def update(self, item2CameraPosition, cameraPose):
@@ -293,20 +316,21 @@ class worldMap(object):
         '''
 
         # Get FoV mask (region of visible points)
-        self.fovMask = np.zeros((self.sizeXcm, self.sizeZcm, 1), np.float32)
+        self.fovMask = np.zeros((self.sizeXcm, self.sizeZcm, self.numItems), np.float32)
         fovTriangle = self.getFoV_2map(cameraPose)
-        cv2.drawContours(self.fovMask, [fovTriangle], 0, 255, -1)
+        cv2.drawContours(self.fovMask, [fovTriangle], 0, [255]*self.numItems, -1)
 
         # export fov triangle to self (poor planning ahead)
         self.fovTriangle = fovTriangle
 
         # Get discovery mask (regions where items are thought to be NOW)
-        self.discoveryMask = np.zeros((self.sizeXcm, self.sizeZcm, 1), np.uint16)
+        self.discoveryMask = np.zeros((self.sizeXcm, self.sizeZcm, self.numItems), np.uint16)
         if item2CameraPosition != []:
-            item2MapPosition = self.getPoints_2map(item2CameraPosition, cameraPose)
-            for (x, y) in item2MapPosition:
-                self.discoveryMask = imagePatch(self.discoveryMask, self.gaussianKernel2D, x, y)
-
+            item2MapPosition, categories = self.getPoints_2map(item2CameraPosition, cameraPose)
+            for (x, y), category in zip(item2MapPosition, categories):
+                layer = category
+                self.discoveryMask[:,:,category] = \
+                    imagePatch(self.discoveryMask[:,:,category], self.gaussianKernel2D[:,:,0], x, y)
 
         # Update likelihood map. Uniform decrease + gaussian increase. Clip for grayscale
         self.map = np.clip(
@@ -316,8 +340,12 @@ class worldMap(object):
 
         # this just to show fov over detections
         self.map_fov = self.map.copy()
-        cv2.drawContours(self.map_fov, [fovTriangle], 0, 255, 2)
-        cv2.circle(self.map_fov, tuple(fovTriangle[2]), 20, 255, 9)
+        cv2.drawContours(self.map_fov, [fovTriangle], 0, [255]*self.numItems, 2)
+        cv2.circle(self.map_fov, tuple(fovTriangle[2]), 20, [255]*self.numItems, 9)
+
+        """
+        likelihood maps are stored on the channels of self.map_fov an self.maps!!!
+        """
 
 
     def getFancyMap(self):
@@ -325,34 +353,67 @@ class worldMap(object):
         Use this to place the funky looking black and white likelihood map onto
         a background image to make it look more stylish.
 
+        This is not efficient for many items but it works :)
+
         NOTE: This uses a transparent image! the transparent region is where the
         likelihood map will be placed.
         '''
+        self.fancyDict = {}
 
-        # Linear invert the likelihood map to display black over white
-        temp_map_fov = 255 - np.clip(self.map * 255, 0,255)
+        mapChannels = cv2.split(self.map)
 
-        # Volatile copy of background just for display
-        background_temp = self.map_background[:,:,:3].copy()
+        for i in range(self.numItems):
+            # Linear invert the likelihood map to display black over white
+            temp_map_fov = 255 - np.clip(mapChannels[i] * 255, 0,255)
+            temp_map_fov = cv2.merge((temp_map_fov,temp_map_fov,temp_map_fov))
 
-        # Overlay map onto background
-        self.fancyMap = imagePatchTopLeftCorner(background_temp, temp_map_fov, self.backgroundX, self.backgroundY)
+            # Volatile copy of background just for display
+            background_temp = self.map_background[:,:,:3].copy()
 
-        # Add Fov and stuff in colors
-        coordChange = np.array([self.backgroundX, self.backgroundY])
-        cv2.drawContours(self.fancyMap, [self.fovTriangle] + coordChange, 0, [150,50,0], 2)
-        cv2.circle(self.fancyMap, tuple(self.fovTriangle[2] + coordChange), 20, [150,50,0], 9)
+            # Overlay map onto background
+            self.fancyMap = imagePatchTopLeftCorner(background_temp, temp_map_fov, self.backgroundX, self.backgroundY)
 
-        # Smoothen likelihood map so it does not look so pixelated
-        self.fancyMap = cv2.filter2D(self.fancyMap,-1,np.ones((3,3),np.float32)/9)
+            # Add Fov and stuff in colors
+            coordChange = np.array([self.backgroundX, self.backgroundY])
+            cv2.drawContours(self.fancyMap, [self.fovTriangle] + coordChange, 0, [150,50,0], 2)
+            cv2.circle(self.fancyMap, tuple(self.fovTriangle[2] + coordChange), 20, [150,50,0], 9)
 
-        # reoverlay background in the opposite direction to apply transparency mask
-        alpha_mask  = self.map_background[:, :, 3] / 255.0
-        img_result  = self.fancyMap[:, :, :3].copy()
-        img_overlay = self.map_background[:, :, :3]
-        self.fancyMap = overlay_image_alpha(img_result, img_overlay, 0, 0, alpha_mask)
+            # Smoothen likelihood map so it does not look so pixelated
+            self.fancyMap = cv2.filter2D(self.fancyMap,-1,np.ones((3,3),np.float32)/9)
 
-        return self.fancyMap
+            # reoverlay background in the opposite direction to apply transparency mask
+            alpha_mask  = self.map_background[:, :, 3] / 255.0
+            img_result  = self.fancyMap[:, :, :3].copy()
+            img_overlay = self.map_background[:, :, :3]
+            outputFancyMap = overlay_image_alpha(img_result, img_overlay, 0, 0, alpha_mask)
+
+            self.fancyDict[self.itemNames[i]] = outputFancyMap.copy()
+
+
+        return self.fancyDict
+
+
+    def packImages(self, additionalStuff, out_height=[]):
+        ''' Build a single image with all we have so far. Provide maps as tuple'''
+
+        # This catches trying to plot the maps when the likelihood maps are still
+        # unitialized because the camera has not located its own position
+        try:
+            self.getFancyMap()
+        except:
+            return additionalStuff
+
+        canvas = self.fancyDict[self.itemNames[0]]
+        for idx, i in enumerate(self.itemNames):
+            if idx == 0:
+                continue
+            else:
+                canvas = np.hstack((canvas, self.fancyDict[i]))
+
+        additionalStuff = cv2.resize(additionalStuff, (canvas.shape[0], canvas.shape[0]))
+        canvas = np.hstack((canvas, additionalStuff))
+
+        return cv2.pyrDown(canvas)
 
 
 

@@ -252,8 +252,8 @@ def parallelWorldMap(itemListAndSize, qCameraPoseFiltered, qItem2CameraPosition,
 
     # Instance the worldMap class
     map = worldMap(
-        numItems=len(itemListAndSize),
-        mapsize_XZ_cm=[84+277,676]
+        items = itemListAndSize,
+        mapsize_XZ_cm = [84+277,676]
         )
 
     # Small-time configuration of dissapearance and appearance rates
@@ -267,7 +267,6 @@ def parallelWorldMap(itemListAndSize, qCameraPoseFiltered, qItem2CameraPosition,
     map.map_background = cv2.imread('map-fancy.png',-1)
     map.backgroundX = 123
     map.backgroundY = 54
-
 
     while 1:
         # time tracker
@@ -298,17 +297,26 @@ def parallelWorldMap(itemListAndSize, qCameraPoseFiltered, qItem2CameraPosition,
                 )
 
             # Show these images if localization is okay else freeze
-            #cv2.imshow('Field of view', map.fovMask)
-            #cv2.imshow('Instantaneous discovery', np.array(map.discoveryMask, np.uint8))
-            #cv2.imshow('Likelihood map', map.map)
-            cv2.imshow('Likelihood map', map.map_fov)
-            cv2.imshow('Fancy map', map.getFancyMap())
+            # cv2.imshow('Field of view', map.fovMask)
+            # cv2.imshow('Instantaneous discovery', np.array(map.discoveryMask, np.uint8))
+            # cv2.imshow('Likelihood map', map.map)
+            # cv2.imshow('Likelihood map 0', map.map_fov[:,:,0])
+            # cv2.imshow('Likelihood map 1', map.map_fov[:,:,1])
+            # cv2.imshow('Fancy map', map.getFancyMap())
+
+            # this to plot fancy full maps :D you can input item strings in fancyDict
+            # fancyDict = map.getFancyMap() # DO NOT RUN if calling full image, else you run twice
+            # cv2.imshow('Fancy likelihood map 0', fancyDict[map.itemNames[0]])
+            # cv2.imshow('Fancy likelihood map 1', fancyDict[map.itemNames[1]])
+
 
         # Always show these images
-        #cv2.imshow('ArUco pose estimator', frameArUco)
-        cv2.imshow('Detection', frameDetected)
-        cv2.waitKey(1)
+        # cv2.imshow('ArUco pose estimator', frameArUco)
+        # cv2.imshow('Detection', frameDetected)
+        all_pics = map.packImages(frameDetected)
+        cv2.imshow('all', all_pics)
 
+        cv2.waitKey(1)
 
         if timeAllModules:
             print(f'\tMapping took {time.time()-now} seconds')
@@ -358,9 +366,14 @@ if __name__ == '__main__':
     markerDict = markerDict_LivingRoom
 
 
-    # list of items of interest and their estimate width
+    # list of items of interest and their estimate width in mm
     itemListAndSize = {'bottle': 100
             }
+
+    itemListAndSize = {'bottle': 100,
+                       'cell phone': 100
+                       }
+
 
     # Main data queues
     q1 = qframeUndist_2aruco     = Queue(maxsize=1)
