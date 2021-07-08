@@ -54,8 +54,9 @@ def relu(x):
     return np.max(x, 0)
 
 
-
 def imagePatch(img, img_overlay, x, y):
+    ''' Overlap a smaller image on top of a bigger one
+    '''
     # compensate for patch radious so that x,y tell the center
     h, w, _ = img_overlay.shape
     y -= h//2
@@ -137,6 +138,8 @@ def overlay_image_alpha(img, img_overlay, x, y, alpha_mask):
 
 
 class worldMap(object):
+    ''' Implements a world map class in which item detections are to be drawn
+    '''
     def __init__(self, mapsize_XZ_cm=[320,320], numItems=1):
         # unpack map size (default is for bedroom)
         self.sizeZcm = mapsize_XZ_cm[0]
@@ -233,6 +236,9 @@ class worldMap(object):
 
 
     def getFoV_2map(self, cameraPose):
+        ''' Convert the coordinates of the ABC points that represent the FoV
+        to map absolute coordinates.
+        '''
         # unpack coordinates for readability, mm-deg -> cm-rad
         # Because WorldFrame and MapFrame are square to each other we add coords
         x_cam2map   = 0.1 * cameraPose[0]  + self.world2map_XZ_cm[0]
@@ -251,6 +257,9 @@ class worldMap(object):
 
 
     def getPoints_2map(self, item2CameraPosition, cameraPose):
+        ''' Convert the coordinates of arbitrary points from camera
+        to map absolute coordinates.
+        '''
         # Might be many points - parallelizable matrix implementation
         # unpack coordinates for readability, mm-deg -> cm-rad
         x_cam2world  = 0.1 * cameraPose[0]
@@ -280,6 +289,8 @@ class worldMap(object):
 
 
     def update(self, item2CameraPosition, cameraPose):
+        ''' Update existing likelihood map with any detection / missdetection
+        '''
 
         # Get FoV mask (region of visible points)
         self.fovMask = np.zeros((self.sizeXcm, self.sizeZcm, 1), np.float32)
@@ -342,3 +353,33 @@ class worldMap(object):
         self.fancyMap = overlay_image_alpha(img_result, img_overlay, 0, 0, alpha_mask)
 
         return self.fancyMap
+
+
+
+
+        """
+        # make map a multilayer array with the number of different items to detect
+        # map = np.zeros(x,z, numitems)
+
+        # have a dict like this where the number is the layer in the map array:
+        categories_dict = {'bottle': 0,
+                           'can':    1,}
+
+        # modify getPoints_2map with additional argument
+        # so that if we detect bottle, can, can, bottle ->  detectedCategories = [0,1,1,0]
+
+        def getPoints_2map(*args, *kwargs):
+            ...
+            detectedCategories = [categories_dict(i[0]) for i in item2CameraPosition]
+            ...
+            return p2map.astype(int), detectedCategories
+
+        # then, in update, do:
+        self.discoveryMask = np.zeros((self.sizeXcm, self.sizeZcm, numitems), np.uint16)
+        if item2CameraPosition != []:
+            item2MapPosition, detectedCategories = self.getPoints_2map(item2CameraPosition, cameraPose)
+            for (x, y), cat in zip(item2MapPosition, detectedCategories):
+                self.discoveryMask = imagePatch(self.discoveryMask[:,:, cat], self.gaussianKernel2D, x, y)
+
+        # debug and profit
+        """

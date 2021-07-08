@@ -46,6 +46,13 @@ from pabloWorldMap import worldMap
 
 from multiprocessing import Process, Queue
 
+"""
+This program runs live darknet inference from images taken from a capture device
+(an IP camera or a webcam) and, from the detections of specified items, builds
+a likelihood map of a 2D environment in which the areas where items are found
+are highlighted in white. Requires a standalone installation of darknet with
+GPU support.
+"""
 
 def trackingMessage(id, parentName, outputMetricName, outputMetric, now):
     """
@@ -374,15 +381,36 @@ if __name__ == '__main__':
 
     # Defining the processes. Placeholders to be able to check on them from mains
     p1 = Process(target=parallelCameraPoseAruco,
-                 args=(markerDict, cameraMatrix, qframeUndist_2aruco, qCamera2ArUcoPose, qPlotland_1, qLocalizationSuccess,))
+                 args=(markerDict,
+                       cameraMatrix,
+                       qframeUndist_2aruco,
+                       qCamera2ArUcoPose,
+                       qPlotland_1,
+                       qLocalizationSuccess,))
+
     p2 = Process(target=parallelKalman,
-                 args=(markerDict, qCamera2ArUcoPose, qCameraPoseFiltered,))
+                 args=(markerDict,
+                       qCamera2ArUcoPose,
+                       qCameraPoseFiltered,))
+
     p3 = Process(target=parallelDarknetInference,
-                 args=(qframeUndist_2darknet, qItemDetections, qPlotland_2,))
+                 args=(qframeUndist_2darknet,
+                       qItemDetections,
+                       qPlotland_2,))
+
     p4 = Process(target=parallelItem2CameraPosition,
-                 args=(itemListAndSize, cameraMatrix, qItemDetections, qItem2CameraPosition,))
+                 args=(itemListAndSize,
+                       cameraMatrix,
+                       qItemDetections,
+                       qItem2CameraPosition,))
+
     p5 = Process(target=parallelWorldMap,
-                 args=(itemListAndSize, qCameraPoseFiltered, qItem2CameraPosition, qPlotland_1, qPlotland_2, qLocalizationSuccess))
+                 args=(itemListAndSize,
+                       qCameraPoseFiltered,
+                       qItem2CameraPosition,
+                       qPlotland_1,
+                       qPlotland_2,
+                       qLocalizationSuccess,))
 
     # Start all the processes
     for p in [p1,p2,p3,p4,p5]:
