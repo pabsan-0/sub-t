@@ -46,13 +46,6 @@ from pabloWorldMap import worldMap
 
 from multiprocessing import Process, Queue
 
-"""
-This program runs live darknet inference from images taken from a capture device
-(an IP camera or a webcam) and, from the detections of specified items, builds
-a likelihood map of a 2D environment in which the areas where items are found
-are highlighted in white. Requires a standalone installation of darknet with
-GPU support.
-"""
 
 def trackingMessage(id, parentName, outputMetricName, outputMetric, now):
     """
@@ -260,8 +253,14 @@ def parallelWorldMap(itemListAndSize, qCameraPoseFiltered, qItem2CameraPosition,
     map.disappearanceRate = 0.0002
     map.appearanceRate    = 0.0005
 
-    # adjust worlFrame Coordinates wr to map origin
+    # adjust worlFrame Coordinates wr to map origin ({W} to {M})
     map.world2map_XZ_cm = [84, 0]
+
+    # image holding the map background plus top left corner coords where {M} is
+    map.map_background = cv2.imread('map-fancy.png',-1)
+    map.backgroundX = 123
+    map.backgroundY = 54
+
 
     while 1:
         # time tracker
@@ -291,18 +290,18 @@ def parallelWorldMap(itemListAndSize, qCameraPoseFiltered, qItem2CameraPosition,
                 cameraPoseFilteredCompliant
                 )
 
-
-
-            # Show if localization is okay else freeze
-            cv2.imshow('Field of view', map.fovMask)
-            cv2.imshow('Instantaneous discovery', np.array(map.discoveryMask, np.uint8))
+            # Show these images if localization is okay else freeze
+            #cv2.imshow('Field of view', map.fovMask)
+            #cv2.imshow('Instantaneous discovery', np.array(map.discoveryMask, np.uint8))
             #cv2.imshow('Likelihood map', map.map)
             cv2.imshow('Likelihood map', map.map_fov)
+            cv2.imshow('Fancy map', map.getFancyMap())
 
-        # Always show
-        cv2.imshow('ArUco pose estimator', frameArUco)
+        # Always show these images
+        #cv2.imshow('ArUco pose estimator', frameArUco)
         cv2.imshow('Detection', frameDetected)
         cv2.waitKey(1)
+
 
         if timeAllModules:
             print(f'\tMapping took {time.time()-now} seconds')
@@ -315,7 +314,7 @@ if __name__ == '__main__':
     timeAllModules, showAllModulesOutput = False, True
 
     # Video feed source
-    cap = cv2.VideoCapture('https://192.168.0.102:8085/video')
+    cap = cv2.VideoCapture('https://192.168.0.100:8085/video')
 
     # Load camera calibration matrices
     with np.load('RedmiNote9Pro.npz') as X:
@@ -375,36 +374,15 @@ if __name__ == '__main__':
 
     # Defining the processes. Placeholders to be able to check on them from mains
     p1 = Process(target=parallelCameraPoseAruco,
-                 args=(markerDict, 
-                       cameraMatrix, 
-                       qframeUndist_2aruco, 
-                       qCamera2ArUcoPose, 
-                       qPlotland_1, 
-                       qLocalizationSuccess,))
-    
+                 args=(markerDict, cameraMatrix, qframeUndist_2aruco, qCamera2ArUcoPose, qPlotland_1, qLocalizationSuccess,))
     p2 = Process(target=parallelKalman,
-                 args=(markerDict, 
-                       qCamera2ArUcoPose, 
-                       qCameraPoseFiltered,))
-    
+                 args=(markerDict, qCamera2ArUcoPose, qCameraPoseFiltered,))
     p3 = Process(target=parallelDarknetInference,
-                 args=(qframeUndist_2darknet, 
-                       qItemDetections, 
-                       qPlotland_2,))
-    
+                 args=(qframeUndist_2darknet, qItemDetections, qPlotland_2,))
     p4 = Process(target=parallelItem2CameraPosition,
-                 args=(itemListAndSize, 
-                       cameraMatrix, 
-                       qItemDetections, 
-                       qItem2CameraPosition,))
-    
+                 args=(itemListAndSize, cameraMatrix, qItemDetections, qItem2CameraPosition,))
     p5 = Process(target=parallelWorldMap,
-                 args=(itemListAndSize, 
-                       qCameraPoseFiltered, 
-                       qItem2CameraPosition, 
-                       qPlotland_1, 
-                       qPlotland_2, 
-                       qLocalizationSuccess,))
+                 args=(itemListAndSize, qCameraPoseFiltered, qItem2CameraPosition, qPlotland_1, qPlotland_2, qLocalizationSuccess))
 
     # Start all the processes
     for p in [p1,p2,p3,p4,p5]:
@@ -432,6 +410,5 @@ if __name__ == '__main__':
             # Make sure that the CUDNN issue solution is cleanly shown on exception
             # This will allow the error-solution message to be seen easily.
             if not p3.is_alive():
-                print('Run the previous command on this terminal. \
-                      Press ^C (ctrl+C) to exit and ignore the error message that will pop up.')
+                print('Run the previous command on this terminal. Press ^C (ctrl+C) to exit and ignore the error message that will pop up.')
                 quit()
