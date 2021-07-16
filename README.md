@@ -1,5 +1,5 @@
 # sub-t
-Object detection in Sub-T environments towards item search.
+Master's thesis work. Object detection in Sub-T environments towards item search.
 
 This repository hosts the files of the project *Convolutional neural networks for object detection in subterranean environments*, which aims to explore the capabilities of different state-of-the-art object detectors in the task of detecting some of the DARPA Sub-t Challenge artifacts from image data, then expand and propose a complete perception layer for item search in a mapped environment with a single camera.
 
