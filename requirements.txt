@@ -5,7 +5,7 @@ opencv_contrib_python==4.5.1.48
 psutil==5.8.0
 pandas==1.2.4
 requests==2.23.0
-Pillow==8.2.0
+pillow>=8.3.2
 pynput==1.7.3
 pyscreenshot==3.0
 scikit_learn==0.24.2
